@@ -1,0 +1,3680 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>India Tech Events</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: a broker's listing board. Header, filter bar, then one ruled section per city in priority order; each event is a row with a date column on the left like a departures board. */
+:root{
+  --bg:#F2F4F7;
+  --surface:#FFFFFF;
+  --ink:#14213D;
+  --muted:#5B6678;
+  --line:#D9DEE6;
+  --accent:#0B5FFF;
+  --accent-ink:#FFFFFF;
+  --signal:#C77700;
+  --signal-bg:#FFF1D6;
+  --good:#1B7F4B;
+  --warn:#B3261E;
+  --chip:#E6EAF0;
+  --display:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1424;--surface:#151E33;--ink:#E8EDF7;--muted:#9AA6BC;--line:#26324D;
+    --accent:#6C9CFF;--accent-ink:#0D1424;--signal:#F2B34A;--signal-bg:#3A2A0C;
+    --good:#5CCB8F;--warn:#FF8A80;--chip:#1E2944;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1424;--surface:#151E33;--ink:#E8EDF7;--muted:#9AA6BC;--line:#26324D;
+  --accent:#6C9CFF;--accent-ink:#0D1424;--signal:#F2B34A;--signal-bg:#3A2A0C;
+  --good:#5CCB8F;--warn:#FF8A80;--chip:#1E2944;color-scheme:dark;
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
+  padding-block:24px 150px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+html,body{max-width:100%;overflow-x:hidden}
+.wrap{max-width:980px;width:100%;min-width:0;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.stack{display:flex;flex-direction:column;gap:34px;width:100%;min-width:0}
+.count{margin:0;color:var(--muted);font:500 12.5px var(--mono);text-transform:uppercase;letter-spacing:.06em}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+header{display:flex;flex-direction:column;gap:10px}
+h1{font-family:var(--display);font-size:clamp(34px,6vw,52px);line-height:1.02;margin:0;letter-spacing:-.02em;text-wrap:balance}
+.sub{color:var(--muted);margin:0;max-width:62ch}
+.stats{display:flex;flex-wrap:wrap;gap:8px 20px;font-family:var(--mono);font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.stats b{color:var(--ink);font-weight:600}
+.bar{display:flex;flex-direction:column;gap:10px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:10px;z-index:5;border-bottom:1px solid var(--line)}
+.row-chips{display:flex;flex-wrap:nowrap;gap:6px;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px;min-width:0}
+@media (max-height:760px){.bar{position:static}}
+.chip{flex:none;white-space:nowrap;font:500 13px var(--body);border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:5px 11px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.label{border:none;background:none;cursor:default;color:var(--muted);padding-left:0;font:500 11.5px var(--mono);text-transform:uppercase;letter-spacing:.08em}
+section{display:flex;flex-direction:column;gap:0}
+h2{font-family:var(--display);font-size:24px;margin:0 0 4px;display:flex;align-items:baseline;gap:10px;letter-spacing:-.01em}
+h2 small{font:500 12px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.rule{border-top:2px solid var(--ink);margin-bottom:2px}
+details.sec>summary{cursor:pointer;list-style:none;padding:4px 0}
+details.sec>summary::-webkit-details-marker{display:none}
+details.sec>summary h2{margin:0;align-items:center}
+.chev{margin-left:auto;width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .15s;flex:none;margin-right:4px}
+details.sec[open]>summary .chev{transform:rotate(-135deg)}
+.month{font:600 11.5px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:12px 0 4px}
+.ev{display:grid;grid-template-columns:92px minmax(0,1fr) auto;gap:6px 16px;padding:12px 0;border-top:1px solid var(--line);align-items:start}
+.date{font-family:var(--mono);font-size:13px;line-height:1.3}
+.date .d{font-size:20px;font-weight:600;display:block}
+.date .tba{font-size:12px;color:var(--muted)}
+.main{min-width:0;display:flex;flex-direction:column;gap:4px}
+.name{font-weight:600;font-size:16px;margin:0;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.meta{color:var(--muted);font-size:13.5px;overflow-wrap:anywhere}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+.tag{font:500 11.5px var(--mono);background:var(--chip);padding:2px 7px;border-radius:4px;color:var(--ink)}
+.tag.sp{background:none;border:1px solid var(--line);color:var(--muted)}
+.note{font-size:13.5px;margin:2px 0 0;overflow-wrap:anywhere}
+.name{min-width:0;overflow-wrap:anywhere}
+.flag{font:600 11px var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:2px 7px;border-radius:4px}
+.flag.must{background:var(--signal-bg);color:var(--signal)}
+.flag.plan{background:var(--accent);color:var(--accent-ink)}
+.flag.unv{border:1px dashed var(--muted);color:var(--muted)}
+.flag.ver{color:var(--good);border:1px solid var(--good)}
+.go{font:600 13px var(--body);text-decoration:none;border:1px solid var(--ink);color:var(--ink);padding:6px 12px;border-radius:6px;white-space:nowrap}
+.go:hover{background:var(--ink);color:var(--bg)}
+.side{display:flex;flex-direction:column;gap:6px;align-items:flex-end;text-align:right}
+.price{font:500 12.5px var(--mono);color:var(--muted);max-width:220px}
+.amt{font:600 20px var(--mono);letter-spacing:-.01em}
+.amt.free{color:var(--good)}
+.amt.tba{font-size:14px;color:var(--muted);font-weight:500}
+.amt.sold{text-decoration:line-through;color:var(--muted)}
+.flag.sold{background:var(--warn);color:var(--bg)}
+.flag.pu{border:1px dashed var(--signal);color:var(--signal)}
+.sortbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.plans{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.plans h2{font-size:20px}
+.plans .ev:first-of-type{border-top:none}
+.watch{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.watch div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;min-width:0}
+.watch b{display:block}
+.empty{color:var(--muted);padding:14px 0}
+details summary{cursor:pointer;font:600 13px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}
+/* Budget cart: bottom dock + slide-over sheet */
+.acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.act{font:600 12.5px var(--body);border:1px solid var(--ink);background:var(--surface);color:var(--ink);padding:6px 10px;border-radius:6px;cursor:pointer;white-space:nowrap}
+.act.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.act.on{background:var(--ink);color:var(--bg)}
+.act.ghost{border-color:var(--line);color:var(--muted)}
+.act.xb{font-size:16px;line-height:1;padding:4px 9px}
+.act.xb:hover{border-color:#b3261e;color:#b3261e}
+.act.ghost.on{border-color:var(--signal);background:var(--signal-bg);color:var(--signal)}
+.act.danger{border-color:var(--line);color:var(--warn)}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  box-shadow:0 -6px 24px rgba(10,20,40,.10)}
+.dockin{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.dockmain{flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:6px}
+.dockline{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.dockamt{font:600 20px var(--mono);letter-spacing:-.01em}
+.dockleft{font:600 14px var(--mono)}
+.dockleft.ok{color:var(--good)}.dockleft.low{color:var(--signal)}.dockleft.over{color:var(--warn)}
+.docksub{font:500 12px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.bar2{height:8px;border-radius:99px;background:var(--chip);overflow:hidden}
+.bar2 i{display:block;height:100%;background:var(--good);border-radius:99px}
+.bar2 i.low{background:var(--signal)}.bar2 i.over{background:var(--warn)}
+.sheet{position:fixed;inset:0;z-index:40;background:rgba(5,10,25,.55)}
+.panel{position:absolute;top:0;bottom:0;right:0;width:min(680px,100%);background:var(--bg);overflow-y:auto;
+  padding:18px max(16px,env(safe-area-inset-right,0px)) calc(40px + env(safe-area-inset-bottom,0px)) 16px;display:flex;flex-direction:column;gap:18px}
+.phead{display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:0;background:var(--bg);padding-block:4px;z-index:2}
+.phead h2{margin:0}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.bcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.bigamt{font:600 30px var(--mono);letter-spacing:-.02em}
+.fld{display:flex;flex-direction:column;gap:3px;font:500 11.5px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.fld input,.fld select{font:500 14px var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 8px;min-width:0;width:100%;text-transform:none;letter-spacing:0}
+.frow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.citem{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.citem.flash{outline:2px solid var(--accent)}
+.chead{display:flex;flex-direction:column;gap:2px}
+.chead b{overflow-wrap:anywhere}
+.cfoot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.ctotal{font:600 17px var(--mono)}
+.chk{display:flex;align-items:center;gap:6px;font:500 13px var(--body);color:var(--ink)}
+.sec{font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:4px 0 -6px}
+.note2{font-size:13px;color:var(--muted);margin:0}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font:500 13px var(--body);z-index:60}
+@media (max-width:620px){
+  .ev{grid-template-columns:72px minmax(0,1fr)}
+  .side{grid-column:2;flex-direction:row;align-items:center;justify-content:flex-start;text-align:left;flex-wrap:wrap}
+  .price{max-width:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<div class="wrap">
+  <header>
+    <h1>India Tech Events</h1>
+    <p class="sub">Conferences, meetups, hackathons and expos for working professionals, by city, in the order you care about. Event data snapshot: 2 November 2026. Updates require editing the included data.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <div class="bar">
+    <div class="row-chips" id="cityChips"></div>
+    <div class="row-chips" id="typeChips"></div>
+    <div class="row-chips" id="sortChips"></div>
+  </div>
+
+  <p class="count" id="count"></p>
+  <div id="plans"></div>
+  <div id="new"></div>
+  <main id="cities" class="stack"></main>
+  <div id="watch"></div>
+  <div id="past"></div>
+  <footer id="foot"></footer>
+</div>
+
+<div class="dock" id="dock"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Learning budget" hidden></div>
+<div class="toast" id="toast" hidden></div>
+
+<script id="events-data" type="application/json">{
+  "meta": {
+    "last_scan": "2026-11-02",
+    "baseline": false,
+    "profile": "",
+    "verification_pass": "2026-11-02",
+    "prev_scan": "2026-10-24"
+  },
+  "events": [
+    {
+      "id": "road-to-devfest-open-source-blr-2026-10-24",
+      "name": "Road to DevFest: Open Source Edition",
+      "type": "meetup",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Google Ananta, Mahadevapura, Bengaluru 560037",
+      "start": "2026-10-24",
+      "end": "2026-10-24",
+      "price": "Free (shortlist only)",
+      "url": "https://gdg.community.dev/events/details/google-gdg-cloud-bengaluru-presents-road-to-devfest-opensource-edition/",
+      "sponsors": [
+        "Google"
+      ],
+      "topics": [
+        "open source",
+        "Google"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Tomorrow, about 9:30 am to 2:30 pm. Attendance is by shortlist and confirmation emails have already gone out, so open registration is likely closed. Bring a laptop.",
+      "price_now_inr": 0,
+      "price_confirmed": false,
+      "sold_out": false
+    },
+    {
+      "id": "black-hat-india-2026-10-27",
+      "name": "Black Hat India 2026",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Sheraton Grand Bengaluru at Brigade Gateway",
+      "start": "2026-10-27",
+      "end": "2026-10-30",
+      "price": "Briefings pass ₹60,000 (other passes not published)",
+      "url": "https://www.blackhat-india.com/",
+      "sponsors": [],
+      "topics": [
+        "cybersecurity"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "other pass prices"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Trainings 27-28 Oct, Briefings and Business Hall 29-30 Oct. Visitor registration closes 25 Oct.",
+      "price_now_inr": 60000,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Briefings delegate pass",
+          "price": 60000
+        }
+      ]
+    },
+    {
+      "id": "google-search-central-live-blr-2026-10-30",
+      "name": "Google Search Central Live",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Hotel on Outer Ring Road",
+      "start": "2026-10-30",
+      "end": "2026-10-30",
+      "price": "Free (application only, closed 15 Oct)",
+      "url": "https://ppc.land/googles-search-team-returns-to-india-after-3-years-for-bengaluru-event/",
+      "sponsors": [
+        "Google"
+      ],
+      "topics": [
+        "search",
+        "SEO"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Applications closed 15 Oct, so only useful if you already applied.",
+      "price_now_inr": 0,
+      "price_confirmed": false,
+      "sold_out": false
+    },
+    {
+      "id": "ubucon-india-2026-11-14",
+      "name": "UbuCon India 2026",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "B.M.S. College of Engineering, Bull Temple Rd, Basavanagudi",
+      "start": "2026-11-14",
+      "end": "2026-11-15",
+      "price": "Not readable (KonfHub page would not load)",
+      "url": "https://in.ubucon.org/",
+      "sponsors": [],
+      "topics": [
+        "Linux",
+        "open source"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Registration is on KonfHub at konfhub.com/ubucon-india-2026.",
+      "price_now_inr": null,
+      "sold_out": false,
+      "price_confirmed": false
+    },
+    {
+      "id": "bengaluru-tech-summit-2026-11-17",
+      "name": "Bengaluru Tech Summit 2026",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "BIEC, 10th Mile, Tumkur Road, Bengaluru",
+      "start": "2026-11-17",
+      "end": "2026-11-19",
+      "price": "Early bird till 3 Nov: Silver ₹4,000, Gold ₹9,000, Platinum ₹14,000 (+18% GST); then ₹8,000 / ₹14,000 / ₹20,000. Expo-only passes ₹1,000 or free",
+      "url": "https://www.bengalurutechsummit.com/conference.php#delegate-tariff",
+      "sponsors": [
+        "Infosys",
+        "Intel",
+        "Qualcomm",
+        "Fujitsu",
+        "JetBrains",
+        "Bosch",
+        "Booking Holdings",
+        "eBay",
+        "ZS"
+      ],
+      "topics": [
+        "AI",
+        "deep tech",
+        "semiconductors",
+        "cybersecurity",
+        "startups"
+      ],
+      "relevance": "must",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [],
+      "first_seen": "2026-10-23",
+      "notes": "29th edition, theme AI & Beyond. Confirmed on the organizer's tariff page on 2 Nov: early-bird offer valid till 3 Nov 2026, with list prices struck through (Silver ₹8,000, Gold ₹14,000, Platinum ₹20,000), plus 18% GST; 10% group discount for 3+ from one organisation. Silver covers conference sessions and the expo but not the inaugural or Trends Stage. Free business visitor pass covers the expo only, 18-19 Nov.",
+      "price_now_inr": 4000,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Silver delegate, sessions + expo (early bird, till 3 Nov)",
+          "price": 4000
+        },
+        {
+          "name": "Gold delegate (early bird, till 3 Nov)",
+          "price": 9000
+        },
+        {
+          "name": "Platinum delegate (early bird, till 3 Nov)",
+          "price": 14000
+        },
+        {
+          "name": "Premium business visitor, expo only",
+          "price": 1000
+        },
+        {
+          "name": "Business visitor, expo only, 18-19 Nov",
+          "price": 0
+        }
+      ],
+      "gst_extra": true,
+      "changes": "Early bird is still live and ends tomorrow, 3 Nov (the last scan wrongly said it ended 23 Oct).",
+      "deadline": "Early-bird prices end 3 Nov 2026 (tomorrow); delegate prices double after."
+    },
+    {
+      "id": "grpconf-india-2026-11-18",
+      "name": "gRPConf India",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Google Ananta Campus, Rio Business Park, Mahadevapura, Bengaluru 560037",
+      "start": "2026-11-18",
+      "end": "2026-11-18",
+      "price": "₹3,800 late rate (standard ₹2,900 ended 28 Oct)",
+      "url": "https://events.linuxfoundation.org/grpconf-india/register/",
+      "sponsors": [
+        "Linux Foundation",
+        "Google"
+      ],
+      "topics": [
+        "gRPC",
+        "backend"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [],
+      "first_seen": "2026-10-23",
+      "notes": "Early bird (₹1,900) and standard (₹2,900) have ended. Late rate runs to 18 Nov. Google Cloud is the diamond sponsor. Certificate of attendance available after the event.",
+      "price_now_inr": 3800,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Late (29 Oct to 18 Nov)",
+          "price": 3800
+        }
+      ],
+      "changes": "Price rose from ₹2,900 to ₹3,800 on 29 Oct."
+    },
+    {
+      "id": "droidcon-india-2026-11-20",
+      "name": "droidcon India",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Conrad Bengaluru",
+      "start": "2026-11-20",
+      "end": "2026-11-20",
+      "price": "Ticket shop open, prices not readable",
+      "url": "https://india.droidcon.com/",
+      "sponsors": [],
+      "topics": [
+        "Android",
+        "mobile"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "9 am to 6 pm. Also has a tech-lead summit for EMs and staff/principal engineers. Team discounts and a droidcon + flutterCon combo ticket exist.",
+      "price_now_inr": null,
+      "sold_out": false,
+      "price_confirmed": false
+    },
+    {
+      "id": "wordcamp-bengaluru-2026-11-20",
+      "name": "WordCamp Bengaluru 2026",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Main day 22 Nov: St. Joseph's Boys' High School, 27 Museum Road, Ashok Nagar. Contributor Day 21 Nov: Bangalore International Centre, Domlur",
+      "start": "2026-11-21",
+      "end": "2026-11-22",
+      "price": "₹800 general (72 left); ₹2,500 Friend of #WCBLR",
+      "url": "https://bengaluru.wordcamp.org/2026/tickets/",
+      "sponsors": [],
+      "topics": [
+        "WordPress",
+        "web"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [],
+      "first_seen": "2026-10-23",
+      "notes": "Organizer dates: 21-22 Nov (an aggregator said 20 Nov and Free, which is wrong). Early bird ₹600 sold out.",
+      "price_now_inr": 800,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "General admission",
+          "price": 800
+        },
+        {
+          "name": "Friend of #WCBLR",
+          "price": 2500
+        }
+      ]
+    },
+    {
+      "id": "fluttercon-india-2026-11-21",
+      "name": "flutterCon India",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Conrad Bengaluru",
+      "start": "2026-11-21",
+      "end": "2026-11-21",
+      "price": "Ticket shop open, prices not readable",
+      "url": "https://india.fluttercon.dev/",
+      "sponsors": [],
+      "topics": [
+        "Flutter",
+        "mobile"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Organizer date is 21 Nov, 9 am to 6 pm. The 24 Nov date was wrong.",
+      "price_now_inr": null,
+      "sold_out": false,
+      "price_confirmed": false
+    },
+    {
+      "id": "civo-navigate-india-2026-11-24",
+      "name": "Civo Navigate India 2026",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Sheraton Grand Bengaluru Whitefield Hotel & Convention Center",
+      "start": "2026-11-24",
+      "end": "2026-11-24",
+      "price": "₹12,000 (late tier); cheaper tiers sold out",
+      "url": "https://www.civo.com/navigate/india/2026",
+      "sponsors": [
+        "Civo"
+      ],
+      "topics": [
+        "cloud native",
+        "Kubernetes",
+        "AI"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [],
+      "first_seen": "2026-10-23",
+      "notes": "Single day, 24 Nov. Super early bird, early bird and general tiers are sold out.",
+      "price_now_inr": 12000,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Late tier",
+          "price": 12000
+        }
+      ]
+    },
+    {
+      "id": "wearedevelopers-india-2026-11-25",
+      "name": "WeAreDevelopers Conference India",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "BIEC, 10th Mile, Tumkur Road, Bengaluru 562162",
+      "start": "2026-11-25",
+      "end": "2026-11-26",
+      "price": "₹10,499 conference pass; ₹20,499 VIP",
+      "url": "https://www.wearedevelopers.com/conference-india/tickets",
+      "sponsors": [
+        "Accenture",
+        "NVIDIA",
+        "Microsoft",
+        "SAP",
+        "Google Cloud",
+        "AWS",
+        "IBM",
+        "Oracle",
+        "Red Hat",
+        "Atlassian"
+      ],
+      "topics": [
+        "AI engineering",
+        "agents",
+        "cloud",
+        "security",
+        "engineering leadership"
+      ],
+      "relevance": "must",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [],
+      "first_seen": "2026-10-23",
+      "notes": "First India edition, 3,000+ builders, 100+ speakers, workshops and tech expo, 25-26 Nov at BIEC. Pass includes certificate of participation and on-demand recordings; an IBM 'Build with Bob' hands-on track is listed.",
+      "price_now_inr": 10499,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Conference pass",
+          "price": 10499
+        },
+        {
+          "name": "VIP pass",
+          "price": 20499
+        }
+      ],
+      "certificate": true,
+      "changes": "Price rose from ₹10,100 to ₹10,499 (VIP ₹20,100 to ₹20,499). The 2-for-1 code is no longer shown on the tickets page."
+    },
+    {
+      "id": "messy-ux-conference-2026-11-28",
+      "name": "The Messy UX Conference 2026",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Bengaluru, venue not published",
+      "start": "2026-11-28",
+      "end": "2026-11-28",
+      "price": "Paid, tiers not readable",
+      "url": "https://designshots.org/conference",
+      "sponsors": [],
+      "topics": [
+        "UX",
+        "design"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "price"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "One listing (startupgrantsindia) shows it as free, but no organizer page confirmed price or venue. A coupon (IXDFBLR20) exists for IxDF community members.",
+      "price_now_inr": null,
+      "sold_out": false,
+      "price_confirmed": false,
+      "changes": "A listing now says Free; unconfirmed on the organizer page."
+    },
+    {
+      "id": "google-devfest-bengaluru-2026",
+      "name": "Google DevFest Bengaluru 2026",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Google Ananta, Rio Business Park, Mahadevapura, Bengaluru 560037",
+      "start": "2026-12-05",
+      "end": "2026-12-05",
+      "price": "₹1,499 hands-on workshop ticket (workshops only). Talks-only super early bird ₹999 sold out",
+      "url": "https://konfhub.com/devfestblr26",
+      "sponsors": [
+        "Google"
+      ],
+      "topics": [
+        "Google",
+        "AI",
+        "Android",
+        "cloud"
+      ],
+      "relevance": "must",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "talks-only ticket"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Announced. 9 am to 6 pm. Only the workshop ticket is on sale; the ticket with talks sold out. A forum thread asks whether the workshop ticket includes talks, unanswered. Same day as DevFest Mumbai and Ahmedabad.",
+      "price_now_inr": 1499,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Hands-on workshop ticket (no talks)",
+          "price": 1499
+        }
+      ]
+    },
+    {
+      "id": "gains-2026-12-09",
+      "name": "Great International AI Native Summit (GAINS)",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "NIMHANS Convention Centre, Hosur Road, Bengaluru (from one listing, not organizer-confirmed)",
+      "start": "2026-12-09",
+      "end": "2026-12-10",
+      "price": "Not published (an aggregator showed early bird ₹8,999 to ₹15,999, now expired)",
+      "url": "https://dev.events/AS/IN/Bengaluru",
+      "sponsors": [],
+      "topics": [
+        "AI"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "price"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "No organizer page was readable, so city, venue and price are unconfirmed. Start date is 8 or 9 Dec depending on the source.",
+      "price_now_inr": null,
+      "sold_out": false,
+      "price_confirmed": false,
+      "changes": "A listing now names NIMHANS Convention Centre in Bengaluru; still no organizer page or price."
+    },
+    {
+      "id": "ai-india-expo-2027-01-11",
+      "name": "AI India Expo 2027",
+      "type": "expo",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "KTPO, Whitefield, Bengaluru",
+      "start": "2027-01-11",
+      "end": "2027-01-13",
+      "price": "Visitor form, no price stated",
+      "url": "https://aiindiaexpo.com/",
+      "sponsors": [],
+      "topics": [
+        "GenAI",
+        "ML",
+        "automation"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Organizer shows 11-13 Jan, three days.",
+      "price_now_inr": null,
+      "sold_out": false,
+      "price_confirmed": false
+    },
+    {
+      "id": "ghci-2027-01-20",
+      "name": "Grace Hopper Celebration India 2027",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "KTPO, Whitefield, Bengaluru",
+      "start": "2027-01-20",
+      "end": "2027-01-22",
+      "price": "From ₹3,540",
+      "url": "https://www.district.in/events/grace-hopper-celebration-india-ghci-2027-buy-tickets",
+      "sponsors": [
+        "Google",
+        "Microsoft",
+        "Amazon"
+      ],
+      "topics": [
+        "women in tech",
+        "careers"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "end date",
+        "tier breakdown"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Billed as a gathering of women and allied technologists, so not women-only. End date is from a press snippet.",
+      "price_now_inr": 3540,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Standard, from",
+          "price": 3540
+        }
+      ]
+    },
+    {
+      "id": "india-digital-summit-2027-02-11",
+      "name": "India Digital Summit (21st edition)",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "The Leela Bhartiya City, Bengaluru",
+      "start": "2027-02-11",
+      "end": "2027-02-12",
+      "price": "Pass request form (L1/L2/L3), no prices",
+      "url": "https://www.iamai.in/events/india-digital-summit",
+      "sponsors": [],
+      "topics": [
+        "digital economy",
+        "policy"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price",
+        "eligibility"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "11-12 Feb, 10 am to 7 pm. Hosted by IAMAI. Policy-heavy.",
+      "price_now_inr": null,
+      "sold_out": false,
+      "price_confirmed": false
+    },
+    {
+      "id": "mlds-2027-bengaluru",
+      "name": "MLDS 2027, Bengaluru leg",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Not published",
+      "start": "2027-02-25",
+      "end": "2027-02-26",
+      "price": "Early bird, group and student passes exist; prices not readable",
+      "url": "https://mlds.analyticsindiamag.com/",
+      "sponsors": [],
+      "topics": [
+        "GenAI",
+        "agents",
+        "ML"
+      ],
+      "relevance": "must",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "price"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "AIM's developer conference, 9th edition. Dates confirmed on the organizer site.",
+      "price_now_inr": null,
+      "sold_out": false,
+      "price_confirmed": false
+    },
+    {
+      "id": "gids-2027-04-27",
+      "name": "Great International Developer Summit (GIDS) 2027",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Bengaluru, venue not published",
+      "start": "2027-04-27",
+      "end": "2027-04-30",
+      "price": "Early bird ₹7,499 per day or ₹24,999 for all 4 days (+18% GST), until 30 Nov",
+      "url": "https://developersummit.com/",
+      "sponsors": [],
+      "topics": [
+        "software architecture",
+        "AI",
+        "engineering"
+      ],
+      "relevance": "must",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "20th edition, theme 'What Endures'. Early-bird prices re-confirmed on 2 Nov; they go up on 30 Nov 2026. Speakers include Neal Ford, Sam Newman, Simon Brown and Venkat Subramaniam.",
+      "price_now_inr": 7499,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Single-day ticket (early bird)",
+          "price": 7499
+        },
+        {
+          "name": "All-access, 4 days (early bird)",
+          "price": 24999
+        }
+      ],
+      "gst_extra": true,
+      "deadline": "Early-bird prices (₹7,499 per day, ₹24,999 all four days, +18% GST) end 30 Nov 2026."
+    },
+    {
+      "id": "gitex-ai-india-2027-06-02",
+      "name": "GITEX AI India 2027",
+      "type": "expo",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "BIEC, Bengaluru",
+      "start": "2027-06-02",
+      "end": "2027-06-04",
+      "price": "Pre-register form, no price stated",
+      "url": "https://www.gitex-india.com/",
+      "sponsors": [],
+      "topics": [
+        "AI",
+        "enterprise",
+        "deep tech"
+      ],
+      "relevance": "must",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Organizer page shows 2-4 Jun 2027.",
+      "price_now_inr": null,
+      "sold_out": false,
+      "price_confirmed": false
+    },
+    {
+      "id": "react-nexus-2027-07-15",
+      "name": "React Nexus 2027",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "NIMHANS Convention Centre, Hosur Road, Lakkasandra, Bengaluru 560029",
+      "start": "2027-07-15",
+      "end": "2027-07-16",
+      "price": "₹4,000 super early bird (+GST)",
+      "url": "https://konfhub.com/react-nexus-2027",
+      "sponsors": [],
+      "topics": [
+        "React",
+        "frontend",
+        "AI web"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "later tiers"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Two days, 15-16 Jul. Only the super early bird tier is published.",
+      "price_now_inr": 4000,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Super early bird, 2 days",
+          "price": 4000
+        }
+      ],
+      "gst_extra": true
+    },
+    {
+      "id": "devfest-hyderabad-2026-10-24",
+      "name": "DevFest Hyderabad 2026",
+      "type": "conference",
+      "city": "Hyderabad",
+      "tier": 3,
+      "venue": "JRC Conventions & Trade Fairs, Narne Road, Film Nagar, Hyderabad 500104",
+      "start": "2026-10-24",
+      "end": "2026-10-24",
+      "price": "Professional ₹1,499 (KonfHub shows it sold out)",
+      "url": "https://devfest.gdghyd.in/",
+      "sponsors": [
+        "Google"
+      ],
+      "topics": [
+        "GenAI",
+        "Gemini",
+        "Google"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "live ticket status"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Tomorrow, 8:30 am to 6 pm. The KonfHub page lists every tier as expired or sold out; one check saw the Professional pass as available, so recheck the page for released tickets.",
+      "price_now_inr": 1499,
+      "price_confirmed": true,
+      "sold_out": true
+    },
+    {
+      "id": "iofug-mini-ai-days-2026-11",
+      "name": "IOFUG Mini AI Days 2026",
+      "type": "conference",
+      "city": "Hyderabad",
+      "tier": 3,
+      "venue": "Vaaraahi Banquet Hall, Level 3, SLN Terminus, Gachibowli, Hyderabad 500032",
+      "start": "2026-10-31",
+      "end": "2026-10-31",
+      "price": "Late fee ₹1,000 (page also says ₹750); early bird ended",
+      "url": "https://iofug.org/",
+      "sponsors": [],
+      "topics": [
+        "AI"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "current price"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Oracle Fusion user group event, 8 am to 2:30 pm. Date is 31 Oct (other dates were wrong).",
+      "price_now_inr": 1000,
+      "price_confirmed": false,
+      "sold_out": false
+    },
+    {
+      "id": "rubyconf-india-2026-11",
+      "name": "RubyConf India 2026",
+      "type": "conference",
+      "city": "Hyderabad",
+      "tier": 3,
+      "venue": "Novotel Hyderabad Airport, Shamshabad, Hyderabad 500409",
+      "start": "2026-11-21",
+      "end": "2026-11-21",
+      "price": "₹2,699 (165 left)",
+      "url": "https://tickets.tixly.in/e/rubyconf-india-2026",
+      "sponsors": [],
+      "topics": [
+        "Ruby",
+        "backend"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "GST"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Single day and track, lunch included. Date is 21 Nov per the organizer.",
+      "price_now_inr": 2699,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Regular",
+          "price": 2699
+        }
+      ]
+    },
+    {
+      "id": "ai-securecon-2026-11-25",
+      "name": "AI SecureCon Summit 2026",
+      "type": "conference",
+      "city": "Hyderabad",
+      "tier": 3,
+      "venue": "Hyderabad (T-HUB mentioned, full address not published)",
+      "start": "2026-11-25",
+      "end": "2026-11-25",
+      "price": "Delegate pass ₹4,500; VIP executive ₹9,999",
+      "url": "https://aisecurecon.thinkinevents.org/book-now",
+      "sponsors": [],
+      "topics": [
+        "AI",
+        "cybersecurity"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue address",
+        "GST"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "A virtual stream is also mentioned.",
+      "price_now_inr": 4500,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Delegate pass",
+          "price": 4500
+        },
+        {
+          "name": "VIP executive pass",
+          "price": 9999
+        }
+      ]
+    },
+    {
+      "id": "avar-2026-12",
+      "name": "AVAR 2026",
+      "type": "conference",
+      "city": "Hyderabad",
+      "tier": 3,
+      "venue": "Trident Hyderabad, HITEC City, Madhapur",
+      "start": "2026-12-02",
+      "end": "2026-12-04",
+      "price": "Conference-only ₹10,000 + tax (early bird ended 20 Oct)",
+      "url": "https://events.aavar.org/cybersecurity-conference/index.php/registration/",
+      "sponsors": [],
+      "topics": [
+        "cybersecurity"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [],
+      "first_seen": "2026-10-23",
+      "notes": "29th annual cybersecurity conference. Two days of sessions within 2-4 Dec.",
+      "price_now_inr": 10000,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Conference-only pass",
+          "price": 10000
+        },
+        {
+          "name": "Non-member with social events pack",
+          "price": 20000
+        }
+      ],
+      "gst_extra": true
+    },
+    {
+      "id": "mlds-2027-hyderabad-03-04",
+      "name": "MLDS 2027, Hyderabad leg",
+      "type": "conference",
+      "city": "Hyderabad",
+      "tier": 3,
+      "venue": "Not published",
+      "start": "2027-03-04",
+      "end": "2027-03-05",
+      "price": "Early bird, group and student passes exist; prices not readable",
+      "url": "https://mlds.analyticsindiamag.com/",
+      "sponsors": [],
+      "topics": [
+        "GenAI",
+        "agents",
+        "ML"
+      ],
+      "relevance": "must",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "price"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "AIM's developer conference.",
+      "price_now_inr": null,
+      "sold_out": false,
+      "price_confirmed": false
+    },
+    {
+      "id": "india-blockchain-week-2026-11-01",
+      "name": "India Blockchain Week 2026",
+      "type": "conference",
+      "city": "Mumbai",
+      "tier": 4,
+      "venue": "Fairmont Mumbai",
+      "start": "2026-11-01",
+      "end": "2026-11-02",
+      "price": "General ₹1,999 + GST (rises 28 Oct); VIP ₹29,999",
+      "url": "https://indiablockchainweek.com/",
+      "sponsors": [],
+      "topics": [
+        "blockchain",
+        "web3"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [],
+      "first_seen": "2026-10-23",
+      "notes": "Student pass ₹999 is not for professionals. An aggregator calling it Free was wrong.",
+      "price_now_inr": 1999,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "General",
+          "price": 1999
+        },
+        {
+          "name": "VIP",
+          "price": 29999
+        }
+      ],
+      "gst_extra": true
+    },
+    {
+      "id": "unchained-summit-india-2026-11-05",
+      "name": "Unchained Summit India",
+      "type": "conference",
+      "city": "Mumbai",
+      "tier": 4,
+      "venue": "Courtyard by Marriott Mumbai International Airport",
+      "start": "2026-11-05",
+      "end": "2026-11-06",
+      "price": "Now US$199 (₹13,999 rate ended 26 Oct)",
+      "url": "https://unchainedsummit.com/india/buy-tickets",
+      "sponsors": [],
+      "topics": [
+        "web3"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "GST"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "tiers": [],
+      "changes": "The ₹13,999 rate ended 26 Oct; standard price is US$199 (INR not shown)."
+    },
+    {
+      "id": "cloud-community-days-mumbai-2026-11-15",
+      "name": "Cloud Community Days 2026 Mumbai",
+      "type": "conference",
+      "city": "Mumbai",
+      "tier": 4,
+      "venue": "The LaLiT Mumbai, Marol, Andheri East, Mumbai 400059",
+      "start": "2026-11-15",
+      "end": "2026-11-15",
+      "price": "Free per listing; Luma page shows no price",
+      "url": "https://luma.com/tsbs46dq",
+      "sponsors": [
+        "Google Cloud"
+      ],
+      "topics": [
+        "cloud",
+        "GCP"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Hosted by GDG Cloud Mumbai. Registration needs host approval. Free label comes from an aggregator only.",
+      "price_now_inr": 0,
+      "price_confirmed": false,
+      "sold_out": false
+    },
+    {
+      "id": "swift-bharat-2026-11-19",
+      "name": "Swift Bharat",
+      "type": "conference",
+      "city": "Mumbai",
+      "tier": 4,
+      "venue": "Yashwantrao Chavan Centre, Mumbai",
+      "start": "2026-11-19",
+      "end": "2026-11-20",
+      "price": "Super early bird ₹4,999; regular ₹5,999",
+      "url": "https://swiftbharat.org/",
+      "sponsors": [],
+      "topics": [
+        "iOS",
+        "Swift"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "GST"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "",
+      "price_now_inr": 4999,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Super early bird",
+          "price": 4999
+        },
+        {
+          "name": "Regular",
+          "price": 5999
+        }
+      ]
+    },
+    {
+      "id": "stackconnect-mumbai-2026-12-02",
+      "name": "StackConnect World Tour: Mumbai",
+      "type": "conference",
+      "city": "Mumbai",
+      "tier": 4,
+      "venue": "Not published",
+      "start": "2026-12-02",
+      "end": "2026-12-02",
+      "price": "Free (limited seats, RSVP)",
+      "url": "https://www.browserstack.com/events/stackconnect-world-tour-mumbai-december-2026",
+      "sponsors": [],
+      "topics": [
+        "quality engineering",
+        "testing",
+        "agentic AI"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "BrowserStack's quality engineering event, 11:30 am to 4:30 pm. It is a testing event, not a general AI conference.",
+      "price_now_inr": 0,
+      "price_confirmed": true,
+      "sold_out": false
+    },
+    {
+      "id": "devfest-mumbai-2026-12-05",
+      "name": "DevFest Mumbai 2026",
+      "type": "conference",
+      "city": "Mumbai",
+      "tier": 4,
+      "venue": "The Ballard Pier Downtown Experience Centre, 1 Shoorji Vallabhdas Rd, Ballard Estate, Fort, Mumbai 400001",
+      "start": "2026-12-05",
+      "end": "2026-12-05",
+      "price": "Free (seats by random draw)",
+      "url": "https://devfestmumbai.com/",
+      "sponsors": [
+        "Google"
+      ],
+      "topics": [
+        "Google",
+        "AI",
+        "Android",
+        "cloud"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [],
+      "first_seen": "2026-10-23",
+      "notes": "Confirmations start 31 Oct, approval required, ID checked at the door. Capacity 2,000+. Pre-events 14-28 Nov.",
+      "price_now_inr": 0,
+      "price_confirmed": true,
+      "sold_out": false
+    },
+    {
+      "id": "wordcamp-mumbai-2027-02-13",
+      "name": "WordCamp Mumbai 2027",
+      "type": "conference",
+      "city": "Mumbai",
+      "tier": 4,
+      "venue": "ATLAS SkillTech University, Equinox Business Park, Kurla West, Mumbai 400070",
+      "start": "2027-02-13",
+      "end": "2027-02-13",
+      "price": "₹750 (146 left)",
+      "url": "https://mumbai.wordcamp.org/2027/tickets/",
+      "sponsors": [],
+      "topics": [
+        "WordPress",
+        "web"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [],
+      "first_seen": "2026-10-23",
+      "notes": "",
+      "price_now_inr": 750,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Regular",
+          "price": 750
+        }
+      ]
+    },
+    {
+      "id": "dev-verse-noida-2026-11-15",
+      "name": "Dev-verse by GDG Cloud Noida",
+      "type": "conference",
+      "city": "Delhi NCR",
+      "tier": 5,
+      "venue": "Crowne Plaza New Delhi Okhla",
+      "start": "2026-11-15",
+      "end": "2026-11-15",
+      "price": "₹499 early bird",
+      "url": "https://www.commudle.com/communities/gdg-cloud-noida/events/dev-verse",
+      "sponsors": [
+        "Google Cloud"
+      ],
+      "topics": [
+        "cloud",
+        "developer experience"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "later price",
+        "street address"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "9 am to 5 pm. Registration is confirmed only after payment.",
+      "price_now_inr": 499,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Early bird",
+          "price": 499
+        }
+      ]
+    },
+    {
+      "id": "reality-check-delhi-2026-11-22",
+      "name": "Reality Check: Delhi Edition",
+      "type": "meetup",
+      "city": "Delhi NCR",
+      "tier": 5,
+      "venue": "Not published",
+      "start": "2026-11-22",
+      "end": "2026-11-22",
+      "price": "Free (curated application)",
+      "url": "https://www.commudle.com/communities/noclue/events/reality-check-delhi-edition",
+      "sponsors": [],
+      "topics": [
+        "enterprise AI adoption"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Topic: 'Pilot to Product', real enterprise AI adoption stories. 10 am to 4 pm. For AI, product and data leads, founders, vendors and consultants.",
+      "price_now_inr": 0,
+      "price_confirmed": true,
+      "sold_out": false
+    },
+    {
+      "id": "workplace-ninjas-india-2026-11-27",
+      "name": "Workplace Ninjas India 2026",
+      "type": "conference",
+      "city": "Delhi NCR",
+      "tier": 5,
+      "venue": "Radisson Blu Plaza Hotel, Delhi Airport, Mahipalpur, New Delhi",
+      "start": "2026-11-27",
+      "end": "2026-11-28",
+      "price": "₹999 two-day pass, available till 28 Nov",
+      "url": "https://konfhub.com/workplace-ninjas-india-2026",
+      "sponsors": [
+        "Microsoft"
+      ],
+      "topics": [
+        "Microsoft 365",
+        "Copilot"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "GST"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Both days, breakfast, lunch and swag. Microsoft Modern Workplace topics (Intune, Defender, Copilot).",
+      "price_now_inr": 999,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Two-day pass",
+          "price": 999
+        }
+      ],
+      "deadline": "₹999 pass available till 28 Nov 2026."
+    },
+    {
+      "id": "ai-innovation-summit-gurugram-2026-12-02",
+      "name": "AI Innovation Summit 2026",
+      "type": "conference",
+      "city": "Delhi NCR",
+      "tier": 5,
+      "venue": "The Leela Ambience, Gurugram",
+      "start": "2026-12-02",
+      "end": "2026-12-02",
+      "price": "Register-interest form, no public pass price",
+      "url": "https://www.aiinnovationsummit.in/",
+      "sponsors": [],
+      "topics": [
+        "enterprise AI"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price",
+        "eligibility"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Aimed at CIOs, CTOs and senior leaders; unclear whether a general professional can buy a pass. From 8:30 am.",
+      "price_now_inr": null,
+      "sold_out": false,
+      "price_confirmed": false
+    },
+    {
+      "id": "devfest-ahmedabad-2026-12-05",
+      "name": "GDG DevFest Ahmedabad 2026",
+      "type": "conference",
+      "city": "Ahmedabad",
+      "tier": 6,
+      "venue": "Shree Shakti Convention Centre, Sardar Patel Ring Rd",
+      "start": "2026-12-05",
+      "end": "2026-12-05",
+      "price": "Super early bird ₹500 (from 24 Oct), early bird ₹600 (from 26 Oct); regular price not published",
+      "url": "https://devfest26.gdgahmedabad.com/registration",
+      "sponsors": [
+        "Google"
+      ],
+      "topics": [
+        "AI",
+        "cloud",
+        "web",
+        "mobile"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "regular price",
+        "current tier"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "12th season, 1,500+ attendees last year. Regular tickets are curated: you apply and shortlisted people get a payment link. The two ticket pages disagree (500/600 vs 600/700).",
+      "price_now_inr": 500,
+      "price_confirmed": false,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Super early bird",
+          "price": 500
+        },
+        {
+          "name": "Early bird",
+          "price": 600
+        }
+      ]
+    },
+    {
+      "id": "devfest-coimbatore-2026-12-12",
+      "name": "DevFest Coimbatore 2026",
+      "type": "conference",
+      "city": "Coimbatore",
+      "tier": 6,
+      "venue": "Not published (Kumaraguru Institutions is the venue partner)",
+      "start": "2026-12-12",
+      "end": "2026-12-12",
+      "price": "Professional and student passes, opening soon",
+      "url": "https://devfest26.gdgcbe.com/",
+      "sponsors": [
+        "Google"
+      ],
+      "topics": [
+        "AI",
+        "cloud",
+        "web",
+        "mobile"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "price"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Three tracks (Build with Gemini + CCD Cloud; Anybody Can Build; Builders & Creators Academy). Organizer page on 2 Nov still says Professional and Student passes 'opening soon', venue to be announced (Kumaraguru Institutions is venue partner). Commitment-fee model: paying confirms your seat. Same weekend as DevSparks Coimbatore (21 Nov is the week before).",
+      "price_now_inr": null,
+      "sold_out": false,
+      "price_confirmed": false
+    },
+    {
+      "id": "gartner-it-symposium-kochi-2026-11-16",
+      "name": "Gartner IT Symposium/Xpo",
+      "type": "conference",
+      "city": "Kochi",
+      "tier": 6,
+      "venue": "Grand Hyatt Kochi",
+      "start": "2026-11-16",
+      "end": "2026-11-18",
+      "price": "₹2,34,100 + GST (government rate ₹1,93,300)",
+      "url": "https://www.gartner.com/en/conferences/apac/symposium-india/register",
+      "sponsors": [],
+      "topics": [
+        "enterprise IT",
+        "strategy"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [],
+      "first_seen": "2026-10-23",
+      "notes": "Confirmed in Gartner's own press release. Aimed at CIOs and senior IT leaders; roundtables are for end users only.",
+      "price_now_inr": 234100,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Standard registration",
+          "price": 234100
+        }
+      ],
+      "gst_extra": true
+    },
+    {
+      "id": "devfest-mangaluru-2026",
+      "name": "GDG DevFest Mangaluru 2026",
+      "type": "conference",
+      "city": "Mangaluru",
+      "tier": 6,
+      "venue": "wrkwrk Triangle, NH 66, Derebail, Mangaluru 575006",
+      "start": "2026-11-14",
+      "end": "2026-11-14",
+      "price": "Regular ₹500; group ₹300; early bird ₹200 sold out",
+      "url": "https://konfhub.com/gdg-cloud-mangalore-devfest-2026",
+      "sponsors": [
+        "Google"
+      ],
+      "topics": [
+        "Google",
+        "cloud",
+        "AI"
+      ],
+      "relevance": "must",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "GST"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Billed as the DevFest Mangaluru 2026 Kickoff Meetup, 9:30 am to 5 pm. No bigger December DevFest is announced yet. The venue changed from The Avatar Hotel.",
+      "price_now_inr": 500,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Regular",
+          "price": 500
+        },
+        {
+          "name": "Group discount (needs a group)",
+          "price": 300
+        }
+      ]
+    },
+    {
+      "id": "principal-dev-masterclass-2026-12-03",
+      "name": "The Principal Dev Masterclass",
+      "type": "workshop",
+      "city": "Online / Pan-India",
+      "tier": 7,
+      "venue": "Online (Zoom), Berlin time",
+      "start": "2026-12-03",
+      "end": "2026-12-04",
+      "price": "€999 (about US$1,099), no INR price",
+      "url": "https://principal.dev",
+      "sponsors": [],
+      "topics": [
+        "architecture",
+        "tech leadership"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "INR price"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Live online, 9 am to 5:30 pm CET, roughly 1:30 pm to 10 pm IST. Needs 3+ years of professional experience.",
+      "price_now_inr": null,
+      "sold_out": false,
+      "price_confirmed": false
+    },
+    {
+      "id": "clean-architecture-masterclass-2026-12-10",
+      "name": "Clean Architecture Masterclass",
+      "type": "workshop",
+      "city": "Online / Pan-India",
+      "tier": 7,
+      "venue": "Online (Zoom), Berlin time",
+      "start": "2026-12-10",
+      "end": "2026-12-11",
+      "price": "€999 (about US$1,099), no INR price",
+      "url": "https://clean.re",
+      "sponsors": [],
+      "topics": [
+        "Java",
+        "architecture"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "INR price"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Live, not recorded, 9 am to 5 pm CET. Java-focused.",
+      "price_now_inr": null,
+      "sold_out": false,
+      "price_confirmed": false
+    },
+    {
+      "id": "devfest-pune-2026-12-13",
+      "name": "DevFest Pune 2026",
+      "type": "conference",
+      "city": "Pune",
+      "tier": 2,
+      "venue": "JW Marriott Pune, Senapati Bapat Road",
+      "start": "2026-12-13",
+      "end": "2026-12-13",
+      "price": "Regular professional ₹2,625; gold ₹7,499 (3 left); prices rise after 24 Oct",
+      "price_now_inr": 2625,
+      "price_confirmed": true,
+      "sold_out": false,
+      "url": "https://devfest.gdgpune.in/register",
+      "sponsors": [
+        "Google"
+      ],
+      "topics": [
+        "AI",
+        "cloud",
+        "Android",
+        "web"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "GST"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "9 am to 6 pm. Student ticket ₹1,875. Gold includes front-row seats and a speakers' dinner on 12 Dec. All three tiers expire 24 Oct, 11 pm.",
+      "tiers": [
+        {
+          "name": "Regular professional",
+          "price": 2625
+        },
+        {
+          "name": "Early bird gold",
+          "price": 7499
+        }
+      ]
+    },
+    {
+      "id": "scipy-india-2026-12-19",
+      "name": "SciPy India 2026",
+      "type": "conference",
+      "city": "Chennai",
+      "tier": 6,
+      "venue": "IIT Madras, Chennai 600036",
+      "start": "2026-12-19",
+      "end": "2026-12-20",
+      "price": "Regular ₹999 per day or ₹1,699 both days (till 8 Dec); corporate ₹2,499 / ₹3,999",
+      "price_now_inr": 999,
+      "price_confirmed": true,
+      "sold_out": false,
+      "url": "https://scipy.in/2026/register.html",
+      "sponsors": [],
+      "topics": [
+        "Python",
+        "scientific computing",
+        "data science"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "GST"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "19 Dec workshops, 20 Dec conference. Early bird ended 19 Oct. Add GST and KonfHub fees.",
+      "tiers": [
+        {
+          "name": "Regular, one day",
+          "price": 999
+        },
+        {
+          "name": "Regular, both days",
+          "price": 1699
+        },
+        {
+          "name": "Corporate, one day",
+          "price": 2499
+        },
+        {
+          "name": "Corporate, both days",
+          "price": 3999
+        }
+      ]
+    },
+    {
+      "id": "identityshield-2027-02-05",
+      "name": "IdentityShield 2027",
+      "type": "conference",
+      "city": "Pune",
+      "tier": 2,
+      "venue": "Not published",
+      "start": "2027-02-05",
+      "end": "2027-02-06",
+      "price": "Not published",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://dev.events/AS/IN/Pune/tech",
+      "sponsors": [],
+      "topics": [
+        "identity",
+        "cybersecurity"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "price",
+        "date"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Aggregator listing only; no organizer page found."
+    },
+    {
+      "id": "wordcamp-pune-2027-02-06",
+      "name": "WordCamp Pune 2027",
+      "type": "conference",
+      "city": "Pune",
+      "tier": 2,
+      "venue": "Not published",
+      "start": "2027-02-06",
+      "end": "2027-02-07",
+      "price": "Not published (2026 edition: ₹500 regular, ₹3,000 pro)",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://dev.events/AS/IN/Pune/tech",
+      "sponsors": [],
+      "topics": [
+        "WordPress",
+        "web"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "price",
+        "date"
+      ],
+      "first_seen": "2026-10-23",
+      "notes": "Aggregator listing only; no official 2027 page found."
+    },
+    {
+      "id": "sap-teched-tour-stop-bengaluru-2027-02-25",
+      "name": "SAP TechEd Tour Stop: Bengaluru",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Not published",
+      "start": "2027-02-25",
+      "end": "2027-02-26",
+      "price": "Not published for 2027 (the 2025 Bengaluru edition was ₹40,000 + tax)",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://www.sap.com/events/teched.html",
+      "sponsors": [
+        "SAP"
+      ],
+      "topics": [
+        "SAP AI",
+        "SAP BTP",
+        "developer hands-on"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "date",
+        "venue",
+        "price"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "Reported on SAP's TechEd pages for other regions, but the Bengaluru stop was not readable on an SAP page. Treat the date as unconfirmed.",
+      "gst_extra": true
+    },
+    {
+      "id": "google-cloud-community-day-kochi-2026-2026-11-14",
+      "name": "Google Cloud Community Day Kochi 2026",
+      "type": "conference",
+      "city": "Kochi",
+      "tier": 6,
+      "venue": "Holiday Inn Cochin, NH Bypass, Kochi 682028",
+      "start": "2026-11-14",
+      "end": "2026-11-14",
+      "price": "Tiered, price not readable (one listing says Free)",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://gdg.community.dev/events/details/google-gdg-cloud-kochi-presents-google-cloud-community-day-kochi-2026/",
+      "sponsors": [
+        "Google Cloud"
+      ],
+      "topics": [
+        "Gemini",
+        "AI agents",
+        "Google Cloud"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "5th edition. Tickets released in tiers on konfhub.com/ccd-kochi-2026 and the price rises as tiers sell out."
+    },
+    {
+      "id": "devfest-gandhinagar-2026-2026-11-01",
+      "name": "DevFest Gandhinagar 2026",
+      "type": "conference",
+      "city": "Gandhinagar",
+      "tier": 6,
+      "venue": "Hall 12A, Helipad Exhibition Centre, Gandhinagar",
+      "start": "2026-11-01",
+      "end": "2026-11-01",
+      "price": "Regular ₹749 and Tatkal ₹999 (page says sold out, FAQ says on sale)",
+      "price_now_inr": 749,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://devfest.gdggandhinagar.dev/",
+      "sponsors": [
+        "Google"
+      ],
+      "topics": [
+        "AI/ML",
+        "Web",
+        "Mobile",
+        "Google Cloud"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "ticket status"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "Likely sold out; the page contradicts itself, so check KonfHub."
+    },
+    {
+      "id": "databricks-community-connect-greater-noida-2026-10-31",
+      "name": "Databricks Community Connect, Greater Noida",
+      "type": "meetup",
+      "city": "Delhi NCR",
+      "tier": 5,
+      "venue": "R Systems International, Greater Noida",
+      "start": "2026-10-31",
+      "end": "2026-10-31",
+      "price": "Free request-to-join; approval needed",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://luma.com/ima1m6p2",
+      "sponsors": [
+        "R Systems"
+      ],
+      "topics": [
+        "data engineering",
+        "AI/ML",
+        "Databricks"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "Run by a Databricks User Group chapter. 10 am start."
+    },
+    {
+      "id": "bengaluru-systems-meetup-23-2026-10-31",
+      "name": "Bengaluru Systems Meetup #23",
+      "type": "meetup",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Not published",
+      "start": "2026-10-31",
+      "end": "2026-10-31",
+      "price": "Not published",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://hasgeek.com/bengalurusystemsmeetup/23/",
+      "sponsors": [],
+      "topics": [
+        "systems engineering"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "price"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "11 am to 1 pm."
+    },
+    {
+      "id": "rust-bangalore-november-meetup-2026-11-14",
+      "name": "Rust Bangalore: November Meetup",
+      "type": "meetup",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "To be decided",
+      "start": "2026-11-14",
+      "end": "2026-11-14",
+      "price": "Not published",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://hasgeek.com/rustbangalore/november-2026-rustacean-meetup/",
+      "sponsors": [],
+      "topics": [
+        "Rust"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "price"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "10:30 am to 1:30 pm."
+    },
+    {
+      "id": "rootconf-2026-annual-conference-2026-11-13",
+      "name": "Rootconf 2026 Annual Conference",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "TERI Auditorium, Domlur, Bengaluru 560071",
+      "start": "2026-11-13",
+      "end": "2026-11-14",
+      "price": "Members only (Rootconf membership); price not shown, sales showed closed",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://hasgeek.com/rootconf/2026/",
+      "sponsors": [
+        "Nutanix",
+        "Roku"
+      ],
+      "topics": [
+        "platform engineering",
+        "SRE",
+        "DevOps",
+        "AI infrastructure"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "Platforms for AI, and AI for Platforms. Livestream available. Sponsors include Nutanix and Roku."
+    },
+    {
+      "id": "rootconf-workshop-chaos-engineering-on-kubernete-2026-11-28",
+      "name": "Rootconf workshop: Chaos Engineering on Kubernetes",
+      "type": "workshop",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Aerospike India, Indiqube Amber, Embassy Golf Links, Domlur",
+      "start": "2026-11-28",
+      "end": "2026-11-29",
+      "price": "Members and Rootconf ticket holders; price not shown",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://hasgeek.com/rootconf/chaos-engineering-workshop/",
+      "sponsors": [
+        "Aerospike"
+      ],
+      "topics": [
+        "chaos engineering",
+        "Kubernetes",
+        "PostgreSQL"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "2 to 6 pm both days, 30 in-person seats, first come first served."
+    },
+    {
+      "id": "the-fifth-elephant-hyderabad-meetup-2026-11-28",
+      "name": "The Fifth Elephant Hyderabad meetup",
+      "type": "meetup",
+      "city": "Hyderabad",
+      "tier": 3,
+      "venue": "Not published",
+      "start": "2026-11-28",
+      "end": "2026-11-28",
+      "price": "Not published (Fifth Elephant meetups are usually for members)",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://hasgeek.com/fifthelephant/hyd-meetup-cfp/",
+      "sponsors": [],
+      "topics": [
+        "agents in production",
+        "applied AI",
+        "small language models"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "price"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "Still a call for proposals (closes 31 Oct). 10:30 am to 1 pm."
+    },
+    {
+      "id": "the-fifth-elephant-winter-edition-2026-2026-12-04",
+      "name": "The Fifth Elephant Winter Edition 2026",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "TERI, Bengaluru (area not confirmed)",
+      "start": "2026-12-04",
+      "end": "2026-12-05",
+      "price": "Members only (Fifth Elephant annual membership); ticket sales shown closed",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://hasgeek.com/fifthelephant/winter-2026/",
+      "sponsors": [],
+      "topics": [
+        "data",
+        "ML",
+        "AI engineering"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "Organizer page confirms 4-5 Dec, 9 am to 6 pm, at TERI, Domlur. Theme: working with data. Registration is for annual members only, and the page shows sales closed; livestream is members-only too.",
+      "changes": "Verified on the organizer page: members-only, sales closed."
+    },
+    {
+      "id": "tiecon-delhi-ncr-2026-2026-12-02",
+      "name": "TiECon Delhi-NCR 2026",
+      "type": "conference",
+      "city": "Delhi NCR",
+      "tier": 5,
+      "venue": "India Habitat Centre (Gate 3), Lodi Road, New Delhi",
+      "start": "2026-12-02",
+      "end": "2026-12-03",
+      "price": "Pages disagree: non-member ₹6,000 + GST (TiE) or from ₹2,000 (ticketing)",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://delhi.tie.org/tiecon-delhi-2026/",
+      "sponsors": [],
+      "topics": [
+        "startups",
+        "AI",
+        "deeptech",
+        "investors"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "More a founder and investor event than a developer conference. 9 am on 2 Dec to 6 pm on 3 Dec.",
+      "gst_extra": true
+    },
+    {
+      "id": "stackconnect-world-tour-hyderabad-2026-11-19",
+      "name": "StackConnect World Tour: Hyderabad",
+      "type": "conference",
+      "city": "Hyderabad",
+      "tier": 3,
+      "venue": "The Westin Hyderabad Mindspace, HITEC City",
+      "start": "2026-11-19",
+      "end": "2026-11-19",
+      "price": "Free (limited seats)",
+      "price_now_inr": 0,
+      "price_confirmed": true,
+      "sold_out": false,
+      "url": "https://www.browserstack.com/events/stackconnect-world-tour-hyderabad-november-2026",
+      "sponsors": [
+        "BrowserStack"
+      ],
+      "topics": [
+        "AI in testing",
+        "test automation",
+        "QA leadership"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [],
+      "first_seen": "2026-10-24",
+      "notes": "9 am to 5 pm. Pick a hands-on workshop (laptop needed, certificate) or talks after lunch.",
+      "certificate": true
+    },
+    {
+      "id": "javafest-2026-2026-12-05",
+      "name": "JavaFest 2026",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Christ University, Bengaluru (campus not published)",
+      "start": "2026-12-05",
+      "end": "2026-12-05",
+      "price": "Registrations opening soon",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://javafest.org/",
+      "sponsors": [
+        "Oracle"
+      ],
+      "topics": [
+        "Java",
+        "enterprise development"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "Run by Bangalore JUG with Kerala, TamilNadu, Gujarat and Kochi JUGs. Organizer page confirms 5 Dec at Christ University and speaker selection is complete; the Register page exists but prices were not shown. Oracle is the named sponsor. Registration on konfhub.com/javafest-2026.",
+      "changes": "Organizer page now confirms date, venue and that speaker selection is done; price still unpublished."
+    },
+    {
+      "id": "fintech-india-innovation-summit-2026-2026-12-04",
+      "name": "Fintech India Innovation Summit 2026",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Not published",
+      "start": "2026-12-04",
+      "end": "2026-12-04",
+      "price": "Delegate pass ₹5,000 (GST not stated)",
+      "price_now_inr": 5000,
+      "price_confirmed": true,
+      "sold_out": false,
+      "url": "https://www.fintechindiaexpo.com/innovation-summit/",
+      "sponsors": [],
+      "topics": [
+        "fintech",
+        "AI in finance",
+        "cybersecurity"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "GST"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": ""
+    },
+    {
+      "id": "comsnets-2027-2027-01-05",
+      "name": "COMSNETS 2027",
+      "type": "conference",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Chancery Pavilion Hotel, Bengaluru",
+      "start": "2027-01-05",
+      "end": "2027-01-09",
+      "price": "Fees to be announced",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://www.comsnets.org/registration.php",
+      "sponsors": [],
+      "topics": [
+        "networks",
+        "communication systems",
+        "research"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "Research-oriented; programme not read."
+    },
+    {
+      "id": "devconf-in-2027-2027-02-26",
+      "name": "DevConf.IN 2027",
+      "type": "conference",
+      "city": "Pune",
+      "tier": 2,
+      "venue": "MIT World Peace University, Pune",
+      "start": "2027-02-26",
+      "end": "2027-02-27",
+      "price": "Free (registration required)",
+      "price_now_inr": 0,
+      "price_confirmed": true,
+      "sold_out": false,
+      "url": "https://www.devconf.info/in",
+      "sponsors": [
+        "Red Hat"
+      ],
+      "topics": [
+        "enterprise AI",
+        "MLOps",
+        "Kubernetes",
+        "supply chain security",
+        "open source"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "certificate"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "Run by Red Hat with MIT WPU. Registration link not live yet; call for proposals closes 8 Nov."
+    },
+    {
+      "id": "convergence-india-2027-2027-03-23",
+      "name": "Convergence India 2027",
+      "type": "expo",
+      "city": "Delhi NCR",
+      "tier": 5,
+      "venue": "Bharat Mandapam, New Delhi",
+      "start": "2027-03-23",
+      "end": "2027-03-25",
+      "price": "Visitor free; delegate Silver ₹10,000, Gold ₹15,000, Platinum ₹20,000 (incl. taxes)",
+      "price_now_inr": 0,
+      "price_confirmed": true,
+      "sold_out": false,
+      "url": "https://register.convergenceindia.org",
+      "sponsors": [
+        "ITPO"
+      ],
+      "topics": [
+        "AI",
+        "6G",
+        "IoT",
+        "data centers",
+        "cybersecurity",
+        "fintech"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [],
+      "first_seen": "2026-10-24",
+      "notes": "Co-located with AI Bharat, IoT India and Fintech India expos. Certificate of attendance listed for delegate passes.",
+      "tiers": [
+        {
+          "name": "Visitor pass",
+          "price": 0
+        },
+        {
+          "name": "Silver delegate",
+          "price": 10000
+        },
+        {
+          "name": "Gold delegate",
+          "price": 15000
+        },
+        {
+          "name": "Platinum delegate",
+          "price": 20000
+        }
+      ],
+      "certificate": true
+    },
+    {
+      "id": "electronica-india-productronica-india-2027-2027-04-28",
+      "name": "electronica India + productronica India 2027",
+      "type": "expo",
+      "city": "Delhi NCR",
+      "tier": 5,
+      "venue": "India Expo Mart, Greater Noida",
+      "start": "2027-04-28",
+      "end": "2027-04-30",
+      "price": "Not published (trade visitor ticket)",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://electronica-india.com/",
+      "sponsors": [],
+      "topics": [
+        "electronics",
+        "embedded",
+        "hardware"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": ""
+    },
+    {
+      "id": "ibex-india-2027-2027-05-06",
+      "name": "IBEX India 2027",
+      "type": "expo",
+      "city": "Mumbai",
+      "tier": 4,
+      "venue": "Jio World Convention Centre, BKC (page also says Bombay Exhibition Centre)",
+      "start": "2027-05-06",
+      "end": "2027-05-07",
+      "price": "Not published",
+      "price_now_inr": null,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://ibexindia.com/",
+      "sponsors": [],
+      "topics": [
+        "banking tech",
+        "fintech",
+        "AI"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "price"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "14th edition. The organizer page contradicts itself on the venue."
+    },
+    {
+      "id": "def-tech-bharat-bengaluru-2027-2027-05-19",
+      "name": "DEF-TECH Bharat Bengaluru 2027",
+      "type": "expo",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "BIEC, Bengaluru",
+      "start": "2027-05-19",
+      "end": "2027-05-21",
+      "price": "Free visitor registration",
+      "price_now_inr": 0,
+      "price_confirmed": true,
+      "sold_out": false,
+      "url": "https://www.deftechbharat.com/",
+      "sponsors": [],
+      "topics": [
+        "defence tech",
+        "aerospace",
+        "deep tech"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "conference price"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "Defence and aerospace expo, so only deep-tech adjacent."
+    },
+    {
+      "id": "gartner-it-infrastructure-operations-cloud-strat-2027-06-07",
+      "name": "Gartner IT Infrastructure, Operations & Cloud Strategies Conference 2027",
+      "type": "conference",
+      "city": "Mumbai",
+      "tier": 4,
+      "venue": "Grand Hyatt Mumbai, Santacruz East",
+      "start": "2027-06-07",
+      "end": "2027-06-08",
+      "price": "Early bird ₹1,11,100 + GST; standard ₹1,28,100 + GST",
+      "price_now_inr": 111100,
+      "price_confirmed": true,
+      "sold_out": false,
+      "url": "https://www.gartner.com/en/conferences/apac/infrastructure-operations-cloud-india/register",
+      "sponsors": [],
+      "topics": [
+        "cloud",
+        "infrastructure",
+        "SRE"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "early-bird deadline"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "Aimed at infrastructure and cloud leaders.",
+      "tiers": [
+        {
+          "name": "Early bird",
+          "price": 111100
+        },
+        {
+          "name": "Standard",
+          "price": 128100
+        }
+      ],
+      "gst_extra": true
+    },
+    {
+      "id": "techspo-delhi-ncr-2027-2027-08-26",
+      "name": "TECHSPO Delhi NCR 2027",
+      "type": "expo",
+      "city": "Delhi NCR",
+      "tier": 5,
+      "venue": "Sheraton New Delhi",
+      "start": "2027-08-26",
+      "end": "2027-08-27",
+      "price": "Free for a limited time (registration required)",
+      "price_now_inr": 0,
+      "price_confirmed": false,
+      "sold_out": false,
+      "url": "https://techspodelhincr.in/",
+      "sponsors": [],
+      "topics": [
+        "SaaS",
+        "adtech",
+        "martech"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "date",
+        "price after free period"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "Organizer says 26-27 Aug; an Eventbrite listing says 25 Aug."
+    },
+    {
+      "id": "gartner-data-analytics-summit-2027-2027-09-13",
+      "name": "Gartner Data & Analytics Summit 2027",
+      "type": "conference",
+      "city": "Mumbai",
+      "tier": 4,
+      "venue": "Grand Hyatt Mumbai, Santacruz East",
+      "start": "2027-09-13",
+      "end": "2027-09-14",
+      "price": "Early bird ₹1,11,100 + GST; standard ₹1,28,100 + GST",
+      "price_now_inr": 111100,
+      "price_confirmed": true,
+      "sold_out": false,
+      "url": "https://www.gartner.com/en/conferences/apac/data-analytics-india/register",
+      "sponsors": [],
+      "topics": [
+        "data",
+        "analytics",
+        "AI governance"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "early-bird deadline"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "Aimed at data and analytics leaders.",
+      "tiers": [
+        {
+          "name": "Early bird",
+          "price": 111100
+        },
+        {
+          "name": "Standard",
+          "price": 128100
+        }
+      ],
+      "gst_extra": true
+    },
+    {
+      "id": "adobe-developers-live-blr-2026-11-12",
+      "name": "Adobe Developers Live Bangalore 2026",
+      "type": "workshop",
+      "city": "Bengaluru",
+      "tier": 1,
+      "venue": "Adobe's Bangalore office (exact address not on the page)",
+      "start": "2026-11-12",
+      "end": "2026-11-12",
+      "price": "Free (capacity limited, RSVP required)",
+      "url": "https://developerevents.adobe.com/events/details/adobe-developer-events-adobe-developers-live-japac-presents-adobe-developers-live-bangalore-2026/",
+      "sponsors": [
+        "Adobe"
+      ],
+      "topics": [
+        "Adobe Experience Manager",
+        "Adobe Commerce",
+        "Edge Delivery Services",
+        "AI"
+      ],
+      "relevance": "must",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "exact venue address"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "9:00 AM to 6:00 PM IST. Hands-on labs, access to Adobe product teams, AI and Edge Delivery Services topics. About 300 already RSVP'd; register early. Certificate not mentioned.",
+      "price_now_inr": 0,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Free",
+          "price": 0
+        }
+      ],
+      "gst_extra": false
+    },
+    {
+      "id": "github-dev-days-gurugram-2026-10-24",
+      "name": "GitHub Dev Days, Gurugram (Delhi NCR)",
+      "type": "workshop",
+      "city": "Gurugram",
+      "tier": 5,
+      "venue": "Masters' Union School of Business, Phase II, Udyog Vihar, Sector 20",
+      "start": "2026-10-24",
+      "end": "2026-10-24",
+      "price": "Free (host approval required, waitlist on)",
+      "url": "https://luma.com/3ohp5iii",
+      "sponsors": [
+        "GitHub"
+      ],
+      "topics": [
+        "GitHub Copilot",
+        "AI + DevOps",
+        "observability"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "certificate"
+      ],
+      "first_seen": "2026-10-24",
+      "notes": "Today, about 9:30 am to 3:30 pm IST (from the Luma event data). Community-run under GitHub's Dev Days programme. Registration needs approval and a waitlist is on, so it may be too late.",
+      "price_now_inr": 0,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Free",
+          "price": 0
+        }
+      ],
+      "gst_extra": false
+    },
+    {
+      "type": "workshop",
+      "relevance": "ok",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "certificate"
+      ],
+      "first_seen": "2026-10-24",
+      "sponsors": [
+        "Zerodha"
+      ],
+      "price": "Free (apply to attend)",
+      "price_now_inr": 0,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Free",
+          "price": 0
+        }
+      ],
+      "gst_extra": false,
+      "url": "https://zerodha.com/varsity/events/",
+      "id": "zerodha-varsity-bootcamp-pune-2026-10-31",
+      "name": "Zerodha Varsity Bootcamp: Technical Analysis & Options Strategies (Pune)",
+      "city": "Pune",
+      "tier": 2,
+      "venue": "Not listed",
+      "start": "2026-10-31",
+      "end": "2026-10-31",
+      "topics": [
+        "markets",
+        "technical analysis",
+        "options"
+      ],
+      "notes": "3:00 PM. Finance and trading education, not tech. Listing shows an Apply Now button; venue not shown and I could not open the bootcamp page for details."
+    },
+    {
+      "type": "workshop",
+      "relevance": "ok",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "certificate"
+      ],
+      "first_seen": "2026-10-24",
+      "sponsors": [
+        "Zerodha"
+      ],
+      "price": "Free (apply to attend)",
+      "price_now_inr": 0,
+      "price_confirmed": true,
+      "sold_out": false,
+      "tiers": [
+        {
+          "name": "Free",
+          "price": 0
+        }
+      ],
+      "gst_extra": false,
+      "url": "https://zerodha.com/varsity/events/",
+      "id": "zerodha-varsity-bootcamp-kochi-2026-10-31",
+      "name": "Zerodha Varsity Bootcamp: In Her Interest, Foundation of Investing for Women (Kochi)",
+      "city": "Kochi",
+      "tier": 6,
+      "venue": "Not listed",
+      "start": "2026-10-31",
+      "end": "2026-10-31",
+      "topics": [
+        "investing",
+        "personal finance"
+      ],
+      "notes": "3:30 PM. Aimed at women, so check eligibility. Finance education, not tech. Venue not shown on the listing."
+    },
+    {
+      "id": "devsparks-coimbatore-2026-11-21",
+      "name": "DevSparks 2026: Coimbatore (YourStory)",
+      "type": "conference",
+      "city": "Coimbatore",
+      "tier": 6,
+      "venue": "Not published",
+      "start": "2026-11-21",
+      "end": "2026-11-21",
+      "price": "Price not published (registration form, entry subject to email confirmation from YourStory)",
+      "price_now_inr": null,
+      "url": "https://devsparks.yourstory.com/2026/coimbatore",
+      "sponsors": [
+        "IBM",
+        "AWS",
+        "NVIDIA",
+        "EY"
+      ],
+      "topics": [
+        "agentic AI",
+        "GenAI",
+        "cloud",
+        "GCCs"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "price"
+      ],
+      "first_seen": "2026-11-02",
+      "notes": "India's 'developer-only' event by YourStory, 300+ developers expected, 15+ speakers, 10+ deep-dive sessions. Partners shown are from previous editions (IBM presenting partner, AWS, NVIDIA, EY). Registration is an application; entry is confirmed by email. Date confirmed on the organizer page, venue and price are not.",
+      "sold_out": false,
+      "price_confirmed": false
+    },
+    {
+      "id": "devsparks-delhi-2026-12-05",
+      "name": "DevSparks 2026: Delhi (YourStory)",
+      "type": "conference",
+      "city": "Delhi NCR",
+      "tier": 5,
+      "venue": "Crowne Plaza Gurgaon",
+      "start": "2026-12-05",
+      "end": "2026-12-05",
+      "price": "Registration form, ticket price not shown (page says Buy Ticket; entry subject to email confirmation)",
+      "price_now_inr": null,
+      "url": "https://devsparks.yourstory.com/2026/delhi",
+      "sponsors": [
+        "IBM",
+        "AWS",
+        "NVIDIA",
+        "EY"
+      ],
+      "topics": [
+        "agentic AI",
+        "GenAI",
+        "cloud",
+        "GCCs"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": true,
+      "unconfirmed": [
+        "price"
+      ],
+      "first_seen": "2026-11-02",
+      "notes": "500+ developers expected, 15+ tech leaders on stage, 10+ deep-dive sessions on agentic AI, scaling AI use cases, AI infra and cloud, and GCC careers. Partners shown are from earlier editions (IBM presenting partner, AWS, NVIDIA, EY, Intuit). Same day as DevFest Bengaluru, Mumbai and Ahmedabad.",
+      "sold_out": false,
+      "price_confirmed": false
+    },
+    {
+      "id": "pune-devcon-2026-12-12",
+      "name": "Pune DevCon 2026",
+      "type": "conference",
+      "city": "Pune",
+      "tier": 2,
+      "venue": "MCCIA Trade Towers, International Convention Centre, 403 Senapati Bapat Road, Pune",
+      "start": "2026-12-12",
+      "end": "2026-12-12",
+      "price": "Not published (call for speakers open till 5 Dec)",
+      "price_now_inr": null,
+      "url": "https://punedevcon.org",
+      "sponsors": [
+        "Microsoft"
+      ],
+      "topics": [
+        "Microsoft",
+        "developer",
+        "cloud"
+      ],
+      "relevance": "good",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "price",
+        "sponsors"
+      ],
+      "first_seen": "2026-11-02",
+      "notes": "Date and venue from the Sessionize call-for-speakers page (call opened 25 Oct, closes 5 Dec). dev.events tags it as a Microsoft conference; no ticket page yet. Day before DevFest Pune (13 Dec), so the two make a weekend.",
+      "sold_out": false,
+      "price_confirmed": false
+    },
+    {
+      "id": "qonfx-hyderabad-2026-12-03",
+      "name": "QonfX Hyderabad 2026 (The Test Tribe)",
+      "type": "conference",
+      "city": "Hyderabad",
+      "tier": 3,
+      "venue": "Not published",
+      "start": "2026-12-03",
+      "end": "2026-12-03",
+      "price": "Not published",
+      "price_now_inr": null,
+      "url": "https://www.thetesttribe.com/qonfx/hyderabad",
+      "sponsors": [],
+      "topics": [
+        "testing",
+        "QA",
+        "AI in testing"
+      ],
+      "relevance": "ok",
+      "status": "none",
+      "verified": false,
+      "unconfirmed": [
+        "venue",
+        "price"
+      ],
+      "first_seen": "2026-11-02",
+      "notes": "Listed on dev.events for 3 Dec; the organizer page would not load for me, so venue, price and eligibility are unconfirmed. A testing-community event, not a general AI conference.",
+      "sold_out": false,
+      "price_confirmed": false
+    }
+  ],
+  "watchlist": [
+    {
+      "name": "AI Tinkerers Pune",
+      "city": "Pune",
+      "url": "https://pune.aitinkerers.org/",
+      "note": "Recurring builder demos and hackathons with sponsors like OpenAI and Google DeepMind. Next date not published.",
+      "when": "Community, ongoing",
+      "m": 0,
+      "id": "w-ai-tinkerers-pune"
+    },
+    {
+      "name": "Pune Developer's Community",
+      "city": "Pune",
+      "url": "https://www.meetup.com/pune-developers-community/",
+      "note": "Regular talks on Meetup, including AI-native engineering meetups.",
+      "when": "Community, ongoing",
+      "m": 0,
+      "id": "w-pune-developer-s-community"
+    },
+    {
+      "name": "GDG Bangalore",
+      "city": "Bengaluru",
+      "url": "https://gdg.community.dev/gdg-bangalore/",
+      "note": "Chapter page showed no upcoming events, yet the DevFest event page exists. Check the chapter's events list for new meetups.",
+      "when": "Community, ongoing",
+      "m": 0,
+      "id": "w-gdg-bangalore"
+    },
+    {
+      "name": "GDG Cochin and GDG Mysuru",
+      "city": "Kochi, Mysuru",
+      "url": "https://gdg.community.dev/gdg-cochin/",
+      "note": "Both chapter pages list no upcoming events. DevFest Kochi 2025 ran on 1 Nov 2025.",
+      "when": "Community, ongoing",
+      "m": 0,
+      "id": "w-gdg-cochin-and-gdg-mysuru"
+    },
+    {
+      "name": "GDG Cloud Mangalore",
+      "city": "Mangaluru",
+      "url": "https://gdg.community.dev/gdg-cloud-mangalore/",
+      "note": "Watching for a main December DevFest after the 14 Nov kickoff meetup.",
+      "when": "Community, ongoing",
+      "m": 0,
+      "id": "w-gdg-cloud-mangalore"
+    },
+    {
+      "name": "Cypher 2027 (AIM)",
+      "city": "Bengaluru",
+      "url": "https://cypher.analyticsindiamag.com/",
+      "when": "Sep 2027, dates TBA",
+      "m": 9,
+      "note": "Cypher 2026 ran 7-9 Oct at KTPO Whitefield. Early passes were reported at ₹6,000 + GST, not confirmed.",
+      "id": "w-cypher-2027-aim"
+    },
+    {
+      "name": "Tech Sparks 2027 (YourStory)",
+      "city": "Bengaluru",
+      "url": "https://techsparks.yourstory.com/",
+      "when": "Oct 2027, dates TBA",
+      "m": 10,
+      "note": "Tech Sparks 2026 ran 13-15 Oct.",
+      "id": "w-tech-sparks-2027-yourstory"
+    },
+    {
+      "name": "Config India (Figma)",
+      "city": "Bengaluru",
+      "url": "https://config.figma.com/india/",
+      "when": "Oct 2027, dates TBA",
+      "m": 10,
+      "note": "2026 edition was 15 Oct at BIEC (in person by application, virtual free).",
+      "id": "w-config-india-figma"
+    },
+    {
+      "name": "Mumbai Tech Week",
+      "city": "Mumbai",
+      "url": "https://mumbaitechweek.com/",
+      "when": "Late May 2027, dates TBA",
+      "m": 5,
+      "note": "2026 edition was 29-30 May at Jio World Convention Centre, passes from ₹1,999. No 2027 date posted.",
+      "id": "w-mumbai-tech-week"
+    },
+    {
+      "name": "AWS Summit Bengaluru",
+      "city": "Bengaluru",
+      "url": "https://aws.amazon.com/events/summits/bengaluru/",
+      "when": "Apr 2027, dates TBA",
+      "m": 4,
+      "note": "2026 edition was 22-23 Apr at KTPO Whitefield.",
+      "id": "w-aws-summit-bengaluru"
+    },
+    {
+      "name": "AWS Summit Mumbai",
+      "city": "Mumbai",
+      "url": "https://aws.amazon.com/events/summits/mumbai/",
+      "when": "May or Jun 2027, dates TBA",
+      "m": 5,
+      "note": "2026 edition was 28 May at Jio World Convention Centre, free.",
+      "id": "w-aws-summit-mumbai"
+    },
+    {
+      "name": "Agentforce World Tour Mumbai (Salesforce)",
+      "city": "Mumbai",
+      "url": "https://www.salesforce.com/in/events/world-tour/",
+      "when": "Apr or May 2027, dates TBA",
+      "m": 4,
+      "note": "2026 edition was 19 May at Jio World Convention Centre, free. Dreamforce itself is in San Francisco, with no India edition found.",
+      "id": "w-agentforce-world-tour-mumbai-salesforce"
+    },
+    {
+      "name": "Google I/O Connect India",
+      "city": "Bengaluru",
+      "url": "https://blog.google/intl/en-in/company-news/google-io-connect-india-2025/",
+      "when": "Jul 2027, dates TBA",
+      "m": 7,
+      "note": "2026 edition was 14 Jul at BIEC (from press coverage).",
+      "id": "w-google-i-o-connect-india"
+    },
+    {
+      "name": "KubeCon + CloudNativeCon India",
+      "city": "Mumbai",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-india/",
+      "when": "Jun 2027, dates TBA",
+      "m": 6,
+      "note": "2026 edition was 18-19 Jun at Jio World Convention Centre. No 2027 India date yet.",
+      "id": "w-kubecon-cloudnativecon-india"
+    },
+    {
+      "name": "Open Source Summit India",
+      "city": "Mumbai",
+      "url": "https://events.linuxfoundation.org/open-source-summit-india/",
+      "when": "Jun 2027, dates TBA",
+      "m": 6,
+      "note": "2026 edition was 16-17 Jun in Mumbai.",
+      "id": "w-open-source-summit-india"
+    },
+    {
+      "name": "Global Fintech Fest",
+      "city": "Mumbai",
+      "url": "https://globalfintechfest.com/",
+      "when": "Sep 2027, dates TBA",
+      "m": 9,
+      "note": "2026 edition was 8-11 Sep at Jio World Centre. Expressions of interest open for 2027.",
+      "id": "w-global-fintech-fest"
+    },
+    {
+      "name": "India Mobile Congress",
+      "city": "New Delhi",
+      "url": "https://www.indiamobilecongress.com/",
+      "when": "Early Oct 2027, dates TBA",
+      "m": 10,
+      "note": "2026 edition was 7-10 Oct. Visitor passes were free; delegate passes reportedly ₹20,000-25,000.",
+      "id": "w-india-mobile-congress"
+    },
+    {
+      "name": "PyCon India",
+      "city": "Bengaluru",
+      "url": "https://in.pycon.org/",
+      "when": "Sep 2027, dates TBA",
+      "m": 9,
+      "note": "2025 edition was 12-15 Sep. No 2026 or 2027 dates found.",
+      "id": "w-pycon-india"
+    },
+    {
+      "name": "The Fifth Elephant annual conference",
+      "city": "Bengaluru",
+      "url": "https://hasgeek.com/fifthelephant",
+      "when": "Jul 2027, dates TBA",
+      "m": 7,
+      "note": "Annual conference is usually in July at NIMHANS. The Winter Edition is listed above.",
+      "id": "w-the-fifth-elephant-annual-conference"
+    },
+    {
+      "name": "Rootconf annual conference",
+      "city": "Bengaluru",
+      "url": "https://hasgeek.com/rootconf",
+      "when": "May 2027 usually",
+      "m": 5,
+      "note": "2026 annual conference is listed above (Nov).",
+      "id": "w-rootconf-annual-conference"
+    },
+    {
+      "name": "IndiaFOSS (FOSS United)",
+      "city": "Bengaluru",
+      "url": "https://fossunited.org/indiafoss/2026",
+      "when": "Sep 2027, dates TBA",
+      "m": 9,
+      "note": "2026 edition was 26-27 Sep at NIMHANS Convention Centre.",
+      "id": "w-indiafoss-foss-united"
+    },
+    {
+      "name": "UXINDIA",
+      "city": "Bengaluru",
+      "url": "https://www.ux-india.org/tickets",
+      "when": "Sep 2027, dates TBA",
+      "m": 9,
+      "note": "2026 leadership summit was 23-25 Sep.",
+      "id": "w-uxindia"
+    },
+    {
+      "name": "Nasscom Technology and Leadership Forum",
+      "city": "Mumbai",
+      "url": "https://www.nasscom.in/ntlf",
+      "when": "Feb 2027 (inferred)",
+      "m": 2,
+      "note": "Held each February (24 Feb 2026). 2027 not published.",
+      "id": "w-nasscom-technology-and-leadership-forum"
+    },
+    {
+      "name": "Nasscom Design & Engineering Summit",
+      "city": "Bengaluru",
+      "url": "https://nasscomdesignengineeringsummit.sched.com/",
+      "when": "Sep 2027, dates TBA",
+      "m": 9,
+      "note": "2026 edition was 1-2 Sep at Sheraton Grand Whitefield.",
+      "id": "w-nasscom-design-engineering-summit"
+    },
+    {
+      "name": "AIBoomi Annual (formerly SaaSBoomi)",
+      "city": "Chennai",
+      "url": "https://www.google.com/search?q=AIBoomi+Annual+2027",
+      "when": "Mar 2027, dates TBA",
+      "m": 3,
+      "note": "2026 edition was 18-20 Mar in Chennai. Seen on aggregators only.",
+      "id": "w-aiboomi-annual-formerly-saasboomi"
+    },
+    {
+      "name": "Oracle AI World Tour, Mumbai stop",
+      "city": "Mumbai",
+      "url": "https://www.oracle.com/ai-world-tour/",
+      "when": "Feb 2027 (if repeated)",
+      "m": 2,
+      "note": "2026 stop was 10 Feb at Jio World Convention Centre. Oracle says 2027 locations are to be announced.",
+      "id": "w-oracle-ai-world-tour-mumbai-stop"
+    },
+    {
+      "name": "IBM Think on Tour, Mumbai",
+      "city": "Mumbai",
+      "url": "https://www.ibm.com/events/think/mumbai",
+      "when": "Oct 2027, dates TBA",
+      "m": 10,
+      "note": "2026 stop was 13 Oct.",
+      "id": "w-ibm-think-on-tour-mumbai"
+    },
+    {
+      "name": "Red Hat Summit: Connect Mumbai",
+      "city": "Mumbai",
+      "url": "https://www.redhat.com/en/summit/connect",
+      "when": "Sep 2027, dates TBA",
+      "m": 9,
+      "note": "2026 edition was 3 Sep at JW Marriott Mumbai Sahar. No APAC dates listed for 2027.",
+      "id": "w-red-hat-summit-connect-mumbai"
+    },
+    {
+      "name": "AMD AI DevDay India",
+      "city": "Bengaluru",
+      "url": "https://pytorch.org/event/amd-ai-devday-india-2026/",
+      "when": "Aug 2027, dates TBA",
+      "m": 8,
+      "note": "2026 edition was 8 Aug at Taj West End.",
+      "id": "w-amd-ai-devday-india"
+    },
+    {
+      "name": "SAP Inside Track Bengaluru",
+      "city": "Bengaluru",
+      "url": "https://sitblr.in/",
+      "when": "Feb or Oct 2027, dates TBA",
+      "m": 2,
+      "note": "2026 edition was 28 Feb at SAP Labs India. Community-run.",
+      "id": "w-sap-inside-track-bengaluru"
+    },
+    {
+      "name": "Atlassian Team on Tour India",
+      "city": "Bengaluru",
+      "url": "https://events.atlassian.com/",
+      "when": "Nov 2027, dates TBA",
+      "m": 11,
+      "note": "Seen in Nov 2024 and Nov 2025 (sold out). Nothing announced for 2026 or 2027.",
+      "id": "w-atlassian-team-on-tour-india"
+    },
+    {
+      "name": "Snowflake World Tour, Bengaluru and Mumbai",
+      "city": "Bengaluru, Mumbai",
+      "url": "https://www.snowflake.com/en/world-tour/bangalore/",
+      "when": "Aug or Sep 2027, dates TBA",
+      "m": 9,
+      "note": "2026 Bengaluru stop was 10 Sep.",
+      "id": "w-snowflake-world-tour-bengaluru-and-mumbai"
+    },
+    {
+      "name": "Databricks Data + AI World Tour, Mumbai",
+      "city": "Mumbai",
+      "url": "https://www.databricks.com/dataaisummit/worldtour?region=apac",
+      "when": "Sep or Oct 2027, dates TBA",
+      "m": 10,
+      "note": "2026 edition was 7 Oct; for customers, prospects and partners.",
+      "id": "w-databricks-data-ai-world-tour-mumbai"
+    },
+    {
+      "name": "ServiceNow World Forum Mumbai",
+      "city": "Mumbai",
+      "url": "https://www.servicenow.com/events/world-forum/mumbai.html",
+      "when": "Oct 2027, dates TBA",
+      "m": 10,
+      "note": "First edition was 6 Oct 2026 at Jio World Centre.",
+      "id": "w-servicenow-world-forum-mumbai"
+    },
+    {
+      "name": "AWS Community Days (Bengaluru, Pune and more)",
+      "city": "Several",
+      "url": "https://sessionize.com/aws-community-day-bengaluru-2026/",
+      "when": "Mar to Oct 2027",
+      "m": 7,
+      "note": "2026: Pune 21 Mar, Bengaluru 11 Jul, Nagpur 26 Sep, Surat 3 Oct.",
+      "id": "w-aws-community-days-bengaluru-pune-and-more"
+    },
+    {
+      "id": "w-devcom-week-26-next-batches",
+      "name": "DEVCOM Week '26 next batches (GDG on Campus VVCE)",
+      "city": "Mysuru",
+      "url": "https://gdg.community.dev/gdg-on-campus-vidyavardhaka-college-of-engineering-mysuru-india/",
+      "when": "Community, ongoing",
+      "m": 0,
+      "note": "First batch (Agentic AI & RAG hands-on workshop, M6-07, VVCE) ran 26 Sep 2026. Open to developers as well as students; price not shown on page. Watching the chapter for more batches."
+    },
+    {
+      "id": "w-delhi-dreamin-salesforce-community",
+      "name": "Delhi Dreamin' (Salesforce community)",
+      "city": "New Delhi",
+      "url": "https://trailblazercommunitygroups.com/events/details/salesforce-salesforce-developer-group-new-delhi-india-presents-delhi-dreamin-26-agents-ai-amp-us/",
+      "when": "Apr 2027, dates TBA",
+      "m": 4,
+      "note": "Last edition 4 Apr 2026 at DAIC, New Delhi; the 2025 edition sold out. Date from a search snippet."
+    },
+    {
+      "id": "w-bharat-dreamin-salesforce-community",
+      "name": "Bharat Dreamin' (Salesforce community)",
+      "city": "Jaipur",
+      "url": "https://www.salesforceben.com/event/bharat-dreamin-2026/",
+      "when": "Jul 2027, dates TBA",
+      "m": 7,
+      "note": "Last edition 11 Jul 2026, Jaipur. Community-run, not Salesforce itself."
+    },
+    {
+      "id": "w-pytorch-day-india-pytorch-foundation-meta-led-co",
+      "name": "PyTorch Day India (PyTorch Foundation, Meta-led community)",
+      "city": "Bengaluru",
+      "url": "https://pytorch.org/event/pytorch-day-india-2026/",
+      "when": "Feb 2027, dates TBA",
+      "m": 2,
+      "note": "Last edition 7 Feb 2026, co-hosted with IBM, NVIDIA and Red Hat. This is your Meta-linked event."
+    },
+    {
+      "id": "w-github-constellation",
+      "name": "GitHub Constellation",
+      "city": "Bengaluru",
+      "url": "https://darshan.is-a.dev/events/github-constellation-2026",
+      "when": "Apr 2027, dates TBA",
+      "m": 4,
+      "note": "Last edition 11 Apr 2026, Hotel Conrad, Bengaluru. Date from an attendee blog, not GitHub."
+    },
+    {
+      "id": "w-nvidia-ai-summit-india",
+      "name": "NVIDIA AI Summit India",
+      "city": "Mumbai",
+      "url": "https://indiaai.gov.in/events/nvidia-ai-summit-india",
+      "when": "Oct 2027, dates TBA",
+      "m": 10,
+      "note": "Last edition 23-25 Oct 2024, Jio World Convention Centre. No 2026 or 2027 India edition announced yet."
+    },
+    {
+      "id": "w-microsoft-ai-tour-india",
+      "name": "Microsoft AI Tour India",
+      "city": "Bengaluru / Delhi",
+      "url": "https://msaitour.microsoft.com/en-us/delhi",
+      "when": "Jan 2027, dates TBA",
+      "m": 1,
+      "note": "Last editions: Delhi 8 Jan 2025 (Bharat Mandapam), Bengaluru 8 Feb 2024. No India stop announced for 2026-27."
+    },
+    {
+      "id": "w-openai-ai-engineers-day-with-peak-xv",
+      "name": "OpenAI AI Engineers Day (with Peak XV)",
+      "city": "Bengaluru / Mumbai",
+      "url": "https://luma.com/7h38q56g",
+      "when": "Jan 2027, dates TBA",
+      "m": 1,
+      "note": "Last editions: Bengaluru 31 Jan 2026 (invite-only), Mumbai 28 May 2026. Nothing announced since."
+    },
+    {
+      "id": "w-atlassian-atlas-camp-bengaluru",
+      "name": "Atlassian Atlas Camp Bengaluru",
+      "city": "Bengaluru",
+      "url": "https://www.atlassian.com/company/events",
+      "when": "Jun 2027, dates TBA",
+      "m": 6,
+      "note": "Last edition 23-24 Jun 2026 from a regional snippet; confirm on Atlassian's page."
+    },
+    {
+      "id": "w-zero1-fest",
+      "name": "Zero1 Fest (Zero1 by Zerodha)",
+      "city": "Bengaluru",
+      "url": "https://zero1byzerodha.com/",
+      "when": "Mar 2027, dates TBA",
+      "m": 3,
+      "note": "Finance-meets-pop-culture festival by Zerodha and LearnApp. 2025 edition was 14 Mar 2025 at Chamara Vajra, Bengaluru (about 3,000 attendees). No 2026 or 2027 date found; the site needs JavaScript so I could only read it via search."
+    },
+    {
+      "id": "w-zerodha-varsity-bootcamps-bengaluru-mysuru-mangaluru",
+      "name": "Zerodha Varsity bootcamps: Bengaluru, Mysuru, Mangaluru",
+      "city": "Bengaluru",
+      "url": "https://zerodha.com/varsity/events/bootcamps",
+      "when": "Community, ongoing",
+      "m": 0,
+      "note": "Your link lists no bootcamp in these three cities right now (open ones: Surat 25 Oct, Pune 31 Oct, Kochi 31 Oct). Bengaluru has a corporate quiz at Stripe on 28 Oct, not open to the public. Free; apply on the page."
+    }
+  ]
+}</script>
+<script>
+(function(){
+  var DATA = JSON.parse(document.getElementById('events-data').textContent);
+  var EV = DATA.events, META = DATA.meta || {};
+  var TODAY = META.last_scan || new Date().toISOString().slice(0,10);
+  var TIERS = [[1,'Bengaluru'],[2,'Pune'],[3,'Hyderabad'],[4,'Mumbai'],[5,'Delhi NCR'],[6,'Tier-two cities'],[7,'Online / Pan-India']];
+  var TYPES = {conference:'Conferences',meetup:'Meetups',hackathon:'Hackathons',workshop:'Workshops',expo:'Expos'};
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var MONFULL = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var f = {tier:0,type:'',must:false,free:false,cert:false,sort:'date',group:true};
+  function money(n){return n===0?'Free':'₹'+Number(n).toLocaleString('en-IN')}
+
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function pd(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2])}
+  function isPast(e){var end=e.end||e.start; return end && end < TODAY}
+  function isNew(e){
+    if(META.baseline) return false;
+    if(META.prev_scan) return !!e.changes || (e.first_seen||'')>META.prev_scan;
+    var d=(pd(TODAY)-pd(e.first_seen))/864e5; return d>=0 && d<35;
+  }
+  function isFree(e){return e.price_now_inr===0}
+  function isHidden(id){return !!(PLAN.hidden&&PLAN.hidden.indexOf(id)>-1)}
+  function st(e){var m=PLAN.marks&&PLAN.marks[e.id];return m||e.status||'none'}
+  function dateBlock(e){
+    if(!e.start) return '<div class="date"><span class="d">TBA</span><span class="tba">'+esc(e.date_label||'')+'</span></div>';
+    var s=pd(e.start), t=e.end&&e.end!==e.start?pd(e.end):null;
+    var d=s.getDate(), m=MON[s.getMonth()];
+    var range=t?(t.getMonth()===s.getMonth()?d+'–'+t.getDate():d+' '+m+'–'+t.getDate()+' '+MON[t.getMonth()]):String(d);
+    var yr=(s.getFullYear()!==pd(TODAY).getFullYear())?' ’'+String(s.getFullYear()).slice(2):'';
+    return '<div class="date"><span class="d">'+range+'</span>'+m+yr+'</div>';
+  }
+  function evHtml(e){
+    var flags='', S=st(e), onPlan=(S==='attending'||S==='want');
+    if(S==='attending') flags+='<span class="flag plan">Attending</span>';
+    if(S==='want') flags+='<span class="flag plan">On my list</span>';
+    if(e.relevance==='must') flags+='<span class="flag must">Top pick</span>';
+    flags+= e.verified ? '<span class="flag ver">Verified</span>' : '<span class="flag unv" title="'+esc((e.unconfirmed||[]).join(', '))+'">Check '+esc((e.unconfirmed||[]).slice(0,3).join(', ')||'details')+'</span>';
+    if(isNew(e)) flags='<span class="flag plan">New</span>'+flags;
+    var seen={}; (e.topics||[]).forEach(function(t){seen[t.toLowerCase()]=1});
+    var tags=(e.certificate?'<span class="tag" style="background:var(--signal-bg);color:var(--signal)">Certificate</span>':'')+(e.topics||[]).map(function(t){return '<span class="tag">'+esc(t)+'</span>'}).join('')+
+      (e.sponsors||[]).filter(function(t){return !seen[t.toLowerCase()]}).slice(0,6).map(function(t){return '<span class="tag sp">'+esc(t)+'</span>'}).join('');
+    return '<article class="ev">'+dateBlock(e)+
+      '<div class="main"><h3 class="name">'+esc(e.name)+' '+flags+'</h3>'+
+      '<div class="meta">'+esc(e.venue||'')+(e.city&&e.tier>=5?' · '+esc(e.city):'')+' · '+esc(TYPES[e.type]||e.type)+'</div>'+
+      (tags?'<div class="tags">'+tags+'</div>':'')+
+      (e.notes?'<p class="note">'+esc(e.notes)+'</p>':'')+
+      (e.changes?'<p class="note"><b>Changed:</b> '+esc(e.changes)+'</p>':'')+
+      (e.deadline?'<p class="note"><b>Deadline:</b> '+esc(e.deadline)+'</p>':'')+'</div>'+
+      '<div class="side">'+amtHtml(e)+'<div class="price">'+esc(e.price||'')+'</div>'+
+      '<div class="acts"><button type="button" class="act" data-a="cart" data-id="'+esc(e.id)+'"></button><button type="button" class="act ghost" data-a="wish" data-id="'+esc(e.id)+'"></button>'+
+      '<button type="button" class="act ghost" data-a="mark" data-k="'+esc(e.id)+'" title="'+(onPlan?'Remove from My Plans':'Add to My Plans')+'">'+(onPlan?'Unmark':'+ My plans')+'</button>'+
+      '<button type="button" class="act ghost xb" data-a="hide" data-k="'+esc(e.id)+'" title="Remove this event from my page" aria-label="Remove '+esc(e.name)+' from my page">×</button></div>'+
+      '<a class="go" href="'+esc(e.url)+'" target="_blank" rel="noopener">Open page</a></div></article>';
+  }
+  function amtHtml(e){
+    var n=e.price_now_inr, cls='amt', txt;
+    if(n==null){cls+=' tba';txt='Price not published'}
+    else{txt=money(n); if(n===0)cls+=' free'; if(e.sold_out)cls+=' sold'}
+    var extra=(e.sold_out?' <span class="flag sold">Sold out</span>':'')+(n!=null&&!e.price_confirmed?' <span class="flag pu">Price unconfirmed</span>':'');
+    return '<div><span class="'+cls+'">'+txt+'</span>'+extra+'</div>';
+  }
+  function sortKey(e){return e.start||'9999-12-31'}
+  function byDate(a,b){return sortKey(a)<sortKey(b)?-1:sortKey(a)>sortKey(b)?1:a.name.localeCompare(b.name)}
+  function byPrice(dir){return function(a,b){
+    var x=a.price_now_inr,y=b.price_now_inr;
+    if(x==null&&y==null) return byDate(a,b);
+    if(x==null) return 1; if(y==null) return -1;
+    return x===y?byDate(a,b):(x-y)*dir;
+  }}
+  function sorted(list){return list.slice().sort(f.sort==='price-asc'?byPrice(1):f.sort==='price-desc'?byPrice(-1):byDate)}
+  function passes(e){
+    if(f.tier && e.tier!==f.tier) return false;
+    if(f.type && e.type!==f.type) return false;
+    if(f.must && e.relevance!=='must') return false;
+    if(f.free && !isFree(e)) return false;
+    if(f.cert && !e.certificate) return false;
+    return true;
+  }
+  function monthLabel(e){if(!e.start) return 'Dates to be announced'; var s=pd(e.start); return MONFULL[s.getMonth()]+' '+s.getFullYear()}
+  function group(list){
+    var out='', last='';
+    sorted(list).forEach(function(e){
+      if(f.sort==='date'){var m=monthLabel(e); if(m!==last){out+='<div class="month">'+esc(m)+'</div>';last=m}}
+      out+=evHtml(e)});
+    return out;
+  }
+  function chip(label,pressed,fn){var b=document.createElement('button');b.className='chip';b.type='button';b.textContent=label;b.setAttribute('aria-pressed',pressed?'true':'false');b.onclick=fn;return b}
+  function renderChips(){
+    var c=document.getElementById('cityChips'); c.innerHTML='';
+    var l=document.createElement('span');l.className='chip label';l.textContent='City';c.appendChild(l);
+    c.appendChild(chip('All',!f.tier,function(){f.tier=0;render()}));
+    TIERS.forEach(function(t){
+      var n=EV.filter(function(e){return !isPast(e)&&!isHidden(e.id)&&e.tier===t[0]}).length;
+      c.appendChild(chip(t[1]+' '+n,f.tier===t[0],function(){f.tier=t[0];render()}))});
+    var t=document.getElementById('typeChips'); t.innerHTML='';
+    var l2=document.createElement('span');l2.className='chip label';l2.textContent='Filter';t.appendChild(l2);
+    t.appendChild(chip('All types',!f.type,function(){f.type='';render()}));
+    Object.keys(TYPES).forEach(function(k){t.appendChild(chip(TYPES[k],f.type===k,function(){f.type=k;render()}))});
+    t.appendChild(chip('Top picks',f.must,function(){f.must=!f.must;render()}));
+    t.appendChild(chip('Free',f.free,function(){f.free=!f.free;render()}));
+    t.appendChild(chip('Certificate',f.cert,function(){f.cert=!f.cert;render()}));
+    var s=document.getElementById('sortChips'); s.innerHTML='';
+    var l3=document.createElement('span');l3.className='chip label';l3.textContent='Sort';s.appendChild(l3);
+    [['date','Date'],['price-asc','Price: low to high'],['price-desc','Price: high to low']].forEach(function(o){
+      s.appendChild(chip(o[1],f.sort===o[0],function(){f.sort=o[0];render()}))});
+    s.appendChild(chip(f.group?'Sections by city: on':'Sections by city: off (one list)',f.group,function(){f.group=!f.group;render()}));
+    if(f.group){
+      s.appendChild(chip('Expand all',false,function(){TIERS.forEach(function(t){OPEN['t'+t[0]]=true});render()}));
+      s.appendChild(chip('Collapse all',false,function(){OPEN={};if(f.tier){f.tier=0}render()}));
+    }
+  }
+  var OPEN={};
+  document.addEventListener('toggle',function(ev){var d=ev.target;if(d&&d.classList&&d.classList.contains('sec')){OPEN[d.getAttribute('data-k')]=d.open}},true);
+  function render(){
+    var upcoming=EV.filter(function(e){return !isPast(e)&&!isHidden(e.id)});
+    var past=EV.filter(function(e){return isPast(e)&&!isHidden(e.id)});
+    var shown=upcoming.filter(passes);
+    document.getElementById('stats').innerHTML=
+      '<span><b>'+upcoming.length+'</b> upcoming</span><span><b>'+upcoming.filter(function(e){return e.relevance==='must'}).length+'</b> top picks</span>'+
+      '<span><b>'+upcoming.filter(function(e){return e.verified}).length+'</b> verified with organizer</span><span>Scanned <b>'+esc(TODAY)+'</b></span>';
+    renderChips();
+    var plans=upcoming.filter(function(e){var S=st(e);return S==='attending'||S==='want'});
+    document.getElementById('plans').innerHTML=plans.length?'<div class="plans"><h2>My plans</h2>'+sorted(plans).map(evHtml).join('')+'</div>':'';
+    var nw=upcoming.filter(isNew);
+    document.getElementById('new').innerHTML=nw.length?'<div class="plans"><h2>New since last month <small>'+nw.length+' added or changed</small></h2>'+sorted(nw).map(evHtml).join('')+'</div>':'';
+    var html='';
+    if(!f.group){
+      html='<section><div class="rule"></div><h2>All cities <small>'+shown.length+' events, '+(f.sort==='date'?'by date':f.sort==='price-asc'?'cheapest first':'priciest first')+'</small></h2>'+
+        (shown.length?group(shown.map(function(e){return e})):'<div class="empty">No events match these filters.</div>')+'</section>';
+    } else
+    TIERS.forEach(function(t){
+      var list=shown.filter(function(e){return e.tier===t[0]});
+      if(f.tier && f.tier!==t[0]) return;
+      var k='t'+t[0], op=OPEN[k]||f.tier===t[0];
+      html+='<section><div class="rule"></div><details class="sec" data-k="'+k+'"'+(op?' open':'')+'><summary><h2>'+esc(t[1])+' <small>'+list.length+' event'+(list.length===1?'':'s')+'</small><span class="chev" aria-hidden="true"></span></h2></summary>'+
+        (list.length?group(list):'<div class="empty">Nothing confirmed here in this snapshot. Check organizer pages for updates.</div>')+'</details></section>';
+    });
+    document.getElementById('cities').innerHTML=html;
+    var nsec=document.querySelectorAll('#cities > section').length;
+    document.getElementById('count').textContent='Showing '+shown.length+' of '+upcoming.length+' events'+(f.group?' in '+nsec+' city section'+(nsec===1?'':'s'):' in one list')+(f.tier||f.type||f.must||f.free||f.cert?' (filters on)':'');
+    var w=(DATA.watchlist||[]).filter(function(x){return !x.id||!isHidden(x.id)});
+    var m0=pd(TODAY).getMonth()+1;
+    function wk(x){return x.m?((x.m-m0+12)%12)+1:0}
+    w.sort(function(a,b){return wk(a)-wk(b)||a.name.localeCompare(b.name)});
+    document.getElementById('watch').innerHTML=w.length?'<section><div class="rule"></div><details class="sec" data-k="watch"'+(OPEN.watch?' open':'')+'><summary><h2>Watching <small>'+w.length+' events with no 2027 date yet</small><span class="chev" aria-hidden="true"></span></h2></summary>'+
+      '<p class="note2" style="margin:2px 0 10px">These repeat every year but have not announced their next dates. The month is when the last edition ran, so it is a guide, not a date. They move into the list above as soon as dates and tickets are published.</p><div class="watch">'+
+      w.map(function(x){return '<div><b><a href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(x.name)+'</a></b>'+(x.when?'<span class="tag">'+esc(x.when)+'</span> ':'')+'<span class="meta">'+esc(x.city)+' · '+esc(x.note)+'</span>'+(x.id?'<div class="acts" style="justify-content:flex-start;margin-top:6px"><button type="button" class="act ghost" data-a="wish" data-id="'+esc(x.id)+'"></button><button type="button" class="act ghost xb" data-a="hide" data-k="'+esc(x.id)+'" title="Remove from my page" aria-label="Remove '+esc(x.name)+' from my page">×</button></div>':'')+'</div>'}).join('')+'</div></details></section>':'';
+    var hid=[]; (PLAN.hidden||[]).forEach(function(id){var e=evById(id)||(DATA.watchlist||[]).filter(function(x){return x.id===id})[0]; if(e) hid.push(e)});
+    document.getElementById('past').innerHTML=(past.length?'<details><summary>Past events ('+past.length+')</summary>'+group(past)+'</details>':'')+
+      (hid.length?'<details class="sec" data-k="hidden"'+(OPEN.hidden?' open':'')+'><summary>Removed by me ('+hid.length+')</summary><div class="watch">'+hid.map(function(e){return '<div><b>'+esc(e.name)+'</b> <span class="meta">'+esc(e.city||'')+'</span><div class="acts" style="justify-content:flex-start;margin-top:6px"><button type="button" class="act" data-a="restore" data-k="'+esc(e.id)+'">Put back</button></div></div>'}).join('')+'</div></details>':'');
+    document.getElementById('foot').innerHTML=
+      (META.baseline?'<p>First scan: everything above was added today, so nothing is marked New yet. After the next data update, new and changed events can appear at the top.</p>':'')+
+      '<p>“Verified” means the date and venue were read from the organizer’s own page or ticket page. “Check” lists what is still unconfirmed. The big number is the cheapest ticket a working professional can buy now, before GST and booking fees unless noted; it is what the price sort uses. Events with no published price sort last.</p>'+
+      (META.profile?'<p>Taste profile: '+esc(META.profile)+'</p>':'');
+    refreshButtons();
+  }
+  /* ---------- Learning budget: cart, wishlist, custom items ---------- */
+  var GST=0.18, DEFAULT_BUDGET=10000, LS_KEY='india-tech-events-plan-v1';
+  var PLAN={v:1,budget:DEFAULT_BUDGET,spent:{},cart:[],wish:[],custom:[],hidden:[],marks:{}};
+  var sheetYear=null, saveTimer=null, dbDoc=null, flashId=null, toastTimer=null, saveNote='';
+  function $(id){return document.getElementById(id)}
+  function inr(n){return '₹'+Math.round(n).toLocaleString('en-IN')}
+  function kfmt(n){
+    var a=Math.abs(n), s=n<0?'-':'';
+    if(a>=100000) return s+'₹'+(a/100000).toFixed(2).replace(/\.?0+$/,'')+'L';
+    if(a>=1000) return s+'₹'+(a/1000).toFixed(1).replace(/\.0$/,'')+'k';
+    return s+'₹'+Math.round(a);
+  }
+  function watchAsEvent(w){
+    var exp=w.m?('2027-'+(w.m<10?'0':'')+w.m+'-15'):null;
+    return {id:w.id,name:w.name,city:w.city,start:null,exp:exp,date_label:w.when||'Date TBA',tiers:[],price_now_inr:null,price:'Not announced',url:w.url,watch:true};
+  }
+  function evById(id){
+    for(var i=0;i<EV.length;i++){if(EV[i].id===id)return EV[i]}
+    var ws=DATA.watchlist||[];
+    for(var j=0;j<ws.length;j++){if(ws[j].id===id)return watchAsEvent(ws[j])}
+    return null;
+  }
+  function evYear(e){return e.start?yearOf(e.start):(e.exp?yearOf(e.exp):curYear())}
+  function curYear(){var d=pd(TODAY);return d.getMonth()>=1?d.getFullYear():d.getFullYear()-1}
+  function yearOf(s){if(!s)return curYear();var d=pd(s);return d.getMonth()>=1?d.getFullYear():d.getFullYear()-1}
+  function yearLabel(y){return 'Feb '+y+' – Jan '+(y+1)}
+  function tiersOf(e){
+    if(e.tiers&&e.tiers.length) return e.tiers;
+    if(e.price_now_inr!=null) return [{name:'Cheapest available',price:e.price_now_inr}];
+    return [];
+  }
+  function tierPrice(e,it){
+    if(it.price!=null&&it.price!=='') return +it.price;
+    var ts=tiersOf(e), t=ts.filter(function(x){return x.name===it.tier})[0]||ts[0];
+    return t?t.price:null;
+  }
+  function lineTotal(it){
+    var e=evById(it.id), p=e?tierPrice(e,it):(it.snap?it.snap.price:null);
+    if(p==null) p=0;
+    return Math.round(p*(it.qty||1)*(it.gst?1+GST:1)+(+it.fees||0)+(+it.travel||0));
+  }
+  function itemYear(it){var e=evById(it.id);return yearOf(e?e.start:(it.snap&&it.snap.start))}
+  function customYear(c){return c.year!=null?+c.year:curYear()}
+  function wishPrice(id){
+    var e=evById(id); if(!e) return null;
+    var ts=tiersOf(e); if(!ts.length) return null;
+    var p=Math.min.apply(null,ts.map(function(t){return t.price}));
+    return Math.round(p*(e.gst_extra?1+GST:1));
+  }
+  function summary(y){
+    var cart=PLAN.cart.filter(function(i){return itemYear(i)===y});
+    var cust=PLAN.custom.filter(function(c){return customYear(c)===y});
+    var total=cart.reduce(function(s,i){return s+lineTotal(i)},0)+cust.reduce(function(s,c){return s+(+c.amount||0)},0);
+    var spent=+(PLAN.spent[y]||0);
+    var wish=PLAN.wish.filter(function(id){var e=evById(id);return e&&evYear(e)===y});
+    var wtotal=wish.reduce(function(s,id){return s+(wishPrice(id)||0)},0);
+    var nop=cart.filter(function(i){var e=evById(i.id);return !e||tierPrice(e,i)==null}).length+wish.filter(function(id){return wishPrice(id)==null}).length;
+    return {cart:cart,cust:cust,total:total,spent:spent,used:spent+total,left:PLAN.budget-spent-total,wish:wish,wtotal:wtotal,nop:nop};
+  }
+  function leftClass(s){return s.left<0?'over':(s.left<PLAN.budget*0.15?'low':'ok')}
+
+  /* persistence: account database when available, browser storage as backup */
+  function snapData(s){
+    if(s==null) return null;
+    var ex=s.exists; if(typeof ex==='function') ex=ex.call(s);
+    if(ex===false) return null;
+    var d=typeof s.data==='function'?s.data():(s.data!==undefined?s.data:s);
+    return d&&typeof d==='object'?d:null;
+  }
+  function applyPlan(d){
+    if(!d) return;
+    PLAN.budget=+d.budget||DEFAULT_BUDGET; PLAN.spent=d.spent||{};
+    PLAN.cart=d.cart||[]; PLAN.wish=d.wish||[]; PLAN.custom=d.custom||[]; PLAN.hidden=d.hidden||[]; PLAN.marks=d.marks||{};
+  }
+  function afterLoad(){render();refreshButtons();renderDock();if(!$('sheet').hidden)renderSheet()}
+  function loadPlan(){
+    try{var raw=localStorage.getItem(LS_KEY); if(raw) applyPlan(JSON.parse(raw))}catch(e){}
+    afterLoad();
+    try{
+      if(window.claude&&window.claude.use){
+        window.claude.use('db').then(function(db){
+          if(!db) return;
+          dbDoc=db.doc('plan/main');
+          return Promise.resolve(dbDoc.get()).then(function(s){
+            var d=snapData(s); if(d) applyPlan(d);
+            saveNote='Synced to your account'; afterLoad();
+          });
+        }).catch(function(){dbDoc=dbDoc||null});
+      }
+    }catch(e){}
+  }
+  function setNote(t){saveNote=t; var n=$('savenote'); if(n) n.textContent=t}
+  function save(){
+    clearTimeout(saveTimer); setNote('Saving…');
+    saveTimer=setTimeout(function(){
+      var data=JSON.parse(JSON.stringify(PLAN));
+      try{localStorage.setItem(LS_KEY,JSON.stringify(data))}catch(e){}
+      if(dbDoc){
+        try{
+          Promise.resolve(dbDoc.set(data)).then(function(){setNote('Saved to your account')},function(){setNote('Saved on this device only')});
+        }catch(e){setNote('Saved on this device only')}
+      } else setNote('Saved on this device only');
+    },300);
+  }
+  function toast(t){var el=$('toast');el.textContent=t;el.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(function(){el.hidden=true},2200)}
+
+  function inCart(id){return PLAN.cart.some(function(i){return i.id===id})}
+  function inWish(id){return PLAN.wish.indexOf(id)>=0}
+  function refreshButtons(){
+    var bs=document.querySelectorAll('button[data-a][data-id]');
+    for(var k=0;k<bs.length;k++){
+      var b=bs[k], id=b.getAttribute('data-id'), a=b.getAttribute('data-a');
+      if(a==='cart'){var on=inCart(id); b.textContent=on?'In cart ✓':'Add to cart'; b.className='act'+(on?' on':' primary')}
+      else{var w=inWish(id); b.textContent=w?'Wishlisted':'Wishlist'; b.className='act ghost'+(w?' on':'')}
+    }
+  }
+  function addCart(id){
+    var e=evById(id); if(!e) return;
+    if(inCart(id)){openSheet(evYear(e),id);return}
+    PLAN.wish=PLAN.wish.filter(function(x){return x!==id});
+    var ts=tiersOf(e), t=ts[0];
+    PLAN.cart.push({id:id,tier:t?t.name:null,qty:1,gst:e.gst_extra===true,fees:0,travel:0,price:null,
+      snap:{name:e.name,start:e.start||null,price:t?t.price:null}});
+    save(); refreshButtons(); renderDock();
+    if(ts.length>1||!t) openSheet(yearOf(e.start),id); else toast('Added to cart');
+  }
+  function toggleWish(id){
+    if(inWish(id)) PLAN.wish=PLAN.wish.filter(function(x){return x!==id});
+    else{ if(inCart(id)){toast('Already in your cart');return} PLAN.wish.push(id); toast('Added to wishlist') }
+    save(); refreshButtons(); renderDock(); if(!$('sheet').hidden) renderSheet();
+  }
+
+  function renderDock(){
+    var y=curYear(), s=summary(y), pct=PLAN.budget>0?Math.min(100,Math.round(s.used/PLAN.budget*100)):0, cls=leftClass(s);
+    var nxt=summary(y+1), extra=(nxt.cart.length+nxt.cust.length)?(' · +'+(nxt.cart.length+nxt.cust.length)+' in next budget year'):'';
+    $('dock').innerHTML='<div class="dockin"><div class="dockmain"><div class="dockline">'+
+      '<span class="dockamt">'+kfmt(s.used)+' / '+kfmt(PLAN.budget)+'</span>'+
+      '<span class="dockleft '+cls+'">'+(s.left<0?kfmt(-s.left)+' over budget':kfmt(s.left)+' left')+'</span></div>'+
+      '<div class="bar2" role="progressbar" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><i class="'+(cls==='ok'?'':cls)+'" style="width:'+pct+'%"></i></div>'+
+      '<div class="docksub">Cart '+(s.cart.length+s.cust.length)+' · Wishlist '+s.wish.length+(s.wish.length?' ('+kfmt(s.wtotal)+')':'')+' · '+esc(yearLabel(y))+esc(extra)+'</div></div>'+
+      '<button type="button" class="act primary" data-a="open">Open cart</button></div>';
+  }
+
+  function openSheet(y,fid){sheetYear=y!=null?y:curYear();flashId=fid||null;$('sheet').hidden=false;renderSheet();document.body.style.overflow='hidden';
+    var f=document.querySelector('.citem.flash'); if(f&&f.scrollIntoView) f.scrollIntoView({block:'center'})}
+  function closeSheet(){$('sheet').hidden=true;document.body.style.overflow='';flashId=null}
+  function yearsList(){
+    var ys={}; ys[curYear()]=1; ys[curYear()+1]=1;
+    PLAN.cart.forEach(function(i){ys[itemYear(i)]=1}); PLAN.custom.forEach(function(c){ys[customYear(c)]=1});
+    PLAN.wish.forEach(function(id){var e=evById(id);if(e)ys[evYear(e)]=1});
+    return Object.keys(ys).map(Number).sort();
+  }
+  function numIn(label,f,key,val,extra){return '<label class="fld">'+label+'<input type="number" min="0" step="any" inputmode="decimal" data-f="'+f+'" data-k="'+esc(key)+'" value="'+(val===0||val?esc(val):'')+'" '+(extra||'')+'></label>'}
+  function cartRow(it){
+    var e=evById(it.id), ts=e?tiersOf(e):[], p=e?tierPrice(e,it):null, noPrice=(p==null);
+    var name=e?e.name:(it.snap&&it.snap.name)||it.id;
+    var meta=e?(e.start?dateTxt(e):(e.date_label||'Date TBA'))+' · '+e.city:'';
+    var tierSel=ts.length>1?'<label class="fld">Ticket<select data-f="tier" data-k="'+esc(it.id)+'">'+ts.map(function(t){return '<option value="'+esc(t.name)+'"'+(t.name===it.tier?' selected':'')+'>'+esc(t.name)+' – '+inr(t.price)+'</option>'}).join('')+'</select></label>':'';
+    return '<div class="citem'+(flashId===it.id?' flash':'')+'"><div class="chead"><b>'+esc(name)+'</b><span class="meta">'+esc(meta)+(ts.length===1?' · '+esc(ts[0].name)+' '+inr(ts[0].price):'')+'</span></div>'+
+      (flashId===it.id&&ts.length>1?'<p class="note2">Pick your ticket below. The price updates the total.</p>':'')+
+      (noPrice?'<p class="note2">No price published yet. Type one to include it in your total.</p>':'')+
+      '<div class="frow">'+tierSel+(noPrice?numIn('Price (₹)','price',it.id,it.price):'')+numIn('Tickets','qty',it.id,it.qty||1,'min="1" step="1"')+
+      numIn('Booking fees (₹)','fees',it.id,it.fees||0)+numIn('Travel and stay (₹)','travel',it.id,it.travel||0)+'</div>'+
+      '<label class="chk"><input type="checkbox" data-f="gst" data-k="'+esc(it.id)+'"'+(it.gst?' checked':'')+'> Add 18% GST'+(e&&e.gst_extra?' (organizer quotes prices without GST)':' (tick if the price excludes GST)')+'</label>'+
+      '<div class="cfoot"><span class="ctotal">'+inr(lineTotal(it))+'</span><span><button type="button" class="act ghost" data-a="tow" data-k="'+esc(it.id)+'">Move to wishlist</button> <button type="button" class="act danger" data-a="rmc" data-k="'+esc(it.id)+'">Remove</button></span></div></div>';
+  }
+  function dateTxt(e){var s=pd(e.start),t=e.end&&e.end!==e.start?pd(e.end):null;return s.getDate()+' '+MON[s.getMonth()]+(t?'–'+t.getDate()+' '+MON[t.getMonth()]:'')+' '+s.getFullYear()}
+  function renderSheet(){
+    var y=sheetYear, s=summary(y), cls=leftClass(s), pct=PLAN.budget>0?Math.min(100,Math.round(s.used/PLAN.budget*100)):0;
+    var tabs=yearsList().map(function(k){return '<button type="button" class="chip" aria-pressed="'+(k===y)+'" data-a="year" data-k="'+k+'">'+esc(yearLabel(k))+(k===curYear()?' (now)':'')+'</button>'}).join('');
+    var h='<div class="panel"><div class="phead"><h2>My learning budget</h2><button type="button" class="act" data-a="close">Close</button></div>'+
+      '<div class="tabs">'+tabs+'</div>'+
+      '<div class="bcard"><div class="bigamt">'+inr(s.used)+' <span style="color:var(--muted);font-size:18px">/ '+inr(PLAN.budget)+'</span></div>'+
+      '<div class="bar2"><i class="'+(cls==='ok'?'':cls)+'" style="width:'+pct+'%"></i></div>'+
+      '<div class="dockleft '+cls+'">'+(s.left<0?inr(-s.left)+' over budget':inr(s.left)+' remaining')+'</div>'+
+      '<div class="docksub">Already spent '+inr(s.spent)+' · Cart '+inr(s.total)+(s.nop?' · '+s.nop+' item'+(s.nop>1?'s':'')+' without a price':'')+'</div>'+
+      '<div class="frow">'+numIn('Yearly budget (₹)','budget','b',PLAN.budget)+numIn('Already spent this budget year (₹)','spent',String(y),s.spent)+'</div></div>';
+    h+='<div class="sec">Cart · '+(s.cart.length+s.cust.length)+' item'+((s.cart.length+s.cust.length)===1?'':'s')+'</div>';
+    if(!s.cart.length&&!s.cust.length) h+='<p class="note2">Nothing in your cart for '+esc(yearLabel(y))+'. Add events with “Add to cart”, or add a course below.</p>';
+    s.cart.forEach(function(it){h+=cartRow(it)});
+    s.cust.forEach(function(c){h+='<div class="citem"><div class="chead"><b>'+esc(c.name)+'</b><span class="meta">'+esc(c.kind||'Other')+(c.date?' · '+esc(c.date):'')+'</span></div><div class="cfoot"><span class="ctotal">'+inr(+c.amount||0)+'</span><button type="button" class="act danger" data-a="rmx" data-k="'+esc(c.cid)+'">Remove</button></div></div>'});
+    h+='<div class="bcard"><div class="sec" style="margin:0">Add a course, certification or other cost</div><div class="frow">'+
+      '<label class="fld">Name<input type="text" id="cx-name" placeholder="e.g. AWS Solutions Architect exam"></label>'+
+      '<label class="fld">Type<select id="cx-kind"><option>Course</option><option>Certification</option><option>Exam</option><option>Other</option></select></label>'+
+      '<label class="fld">Amount (₹)<input type="number" min="0" step="any" id="cx-amt" inputmode="decimal"></label>'+
+      '<label class="fld">Date (optional)<input type="date" id="cx-date"></label></div>'+
+      '<div><button type="button" class="act primary" data-a="addx">Add to cart</button></div></div>';
+    h+='<div class="sec">Wishlist · '+s.wish.length+(s.wish.length?' · '+inr(s.wtotal):'')+'</div>';
+    if(!s.wish.length) h+='<p class="note2">Nothing wishlisted for this budget year. Wishlist items do not count toward your budget until you move them to the cart.</p>';
+    s.wish.forEach(function(id){var e=evById(id),p=wishPrice(id);
+      h+='<div class="citem"><div class="chead"><b>'+esc(e.name)+'</b><span class="meta">'+(e.start?dateTxt(e):esc(e.date_label||'Date TBA'))+' · '+esc(e.city)+'</span></div>'+
+        '<div class="cfoot"><span class="ctotal">'+(p==null?'Price not published':'from '+inr(p))+'</span><span>'+(e.watch?'<span class="meta">Not open yet. Moves to the main list once dates are announced.</span> ':'<button type="button" class="act primary" data-a="tocart" data-k="'+esc(id)+'">Move to cart</button> ')+'<button type="button" class="act danger" data-a="rmw" data-k="'+esc(id)+'">Remove</button></span></div></div>'});
+    if(s.wish.length) h+='<p class="note2">If you bought the whole wishlist too, you would have '+(s.left-s.wtotal<0?inr(s.wtotal-s.left)+' over budget':inr(s.left-s.wtotal)+' left')+'. Wishlist prices use the cheapest ticket'+'.</p>';
+    h+='<p class="note2" id="savenote">'+esc(saveNote)+'</p></div>';
+    var sh=$('sheet'), top=sh.firstChild?sh.firstChild.scrollTop:0;
+    sh.innerHTML=h; if(sh.firstChild) sh.firstChild.scrollTop=top;
+  }
+
+  document.addEventListener('click',function(ev){
+    var t=ev.target.closest?ev.target.closest('[data-a]'):null;
+    if(!t){ if(ev.target.id==='sheet') closeSheet(); return }
+    var a=t.getAttribute('data-a'), id=t.getAttribute('data-id'), k=t.getAttribute('data-k');
+    if(a==='cart') addCart(id);
+    else if(a==='wish') toggleWish(id);
+    else if(a==='hide'){if(PLAN.hidden.indexOf(k)<0)PLAN.hidden.push(k);save();render();toast('Removed. You can put it back from "Removed by me" at the bottom.')}
+    else if(a==='restore'){PLAN.hidden=PLAN.hidden.filter(function(x){return x!==k});save();render();toast('Put back')}
+    else if(a==='mark'){var ev0=evById(k),S0=ev0?st(ev0):'none';PLAN.marks[k]=(S0==='want'||S0==='attending')?'none':'want';save();render();toast(PLAN.marks[k]==='want'?'Added to My Plans':'Removed from My Plans')}
+    else if(a==='open') openSheet(curYear());
+    else if(a==='close') closeSheet();
+    else if(a==='year'){sheetYear=+k;renderSheet()}
+    else if(a==='rmc'){PLAN.cart=PLAN.cart.filter(function(i){return i.id!==k});changed()}
+    else if(a==='tow'){PLAN.cart=PLAN.cart.filter(function(i){return i.id!==k});if(!inWish(k))PLAN.wish.push(k);changed()}
+    else if(a==='tocart'){PLAN.wish=PLAN.wish.filter(function(x){return x!==k});addCartFromSheet(k)}
+    else if(a==='rmw'){PLAN.wish=PLAN.wish.filter(function(x){return x!==k});changed()}
+    else if(a==='rmx'){PLAN.custom=PLAN.custom.filter(function(c){return c.cid!==k});changed()}
+    else if(a==='addx'){
+      var nm=$('cx-name').value.trim(), amt=parseFloat($('cx-amt').value), dt=$('cx-date').value;
+      if(!nm||isNaN(amt)||amt<0){toast('Add a name and an amount');return}
+      PLAN.custom.push({cid:'c'+Date.now(),name:nm,amount:amt,kind:$('cx-kind').value,date:dt||'',year:dt?yearOf(dt):sheetYear});
+      changed();
+    }
+  });
+  function addCartFromSheet(id){
+    var e=evById(id); if(!e){changed();return}
+    var ts=tiersOf(e), t=ts[0];
+    PLAN.cart.push({id:id,tier:t?t.name:null,qty:1,gst:e.gst_extra===true,fees:0,travel:0,price:null,snap:{name:e.name,start:e.start||null,price:t?t.price:null}});
+    flashId=id; changed();
+  }
+  function changed(){save();refreshButtons();renderDock();renderSheet()}
+  document.addEventListener('change',function(ev){
+    var t=ev.target; if(!t.getAttribute) return;
+    var f=t.getAttribute('data-f'); if(!f) return;
+    var k=t.getAttribute('data-k'), v=t.type==='checkbox'?t.checked:t.value;
+    if(f==='budget'){PLAN.budget=Math.max(0,parseFloat(v)||0)}
+    else if(f==='spent'){PLAN.spent[k]=Math.max(0,parseFloat(v)||0)}
+    else{
+      var it=PLAN.cart.filter(function(i){return i.id===k})[0]; if(!it) return;
+      if(f==='tier') it.tier=v;
+      else if(f==='gst') it.gst=!!v;
+      else if(f==='qty') it.qty=Math.max(1,parseInt(v,10)||1);
+      else if(f==='price') it.price=v===''?null:Math.max(0,parseFloat(v)||0);
+      else it[f]=Math.max(0,parseFloat(v)||0);
+    }
+    changed();
+  });
+  document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&!$('sheet').hidden) closeSheet()});
+
+  render();
+  refreshButtons();
+  loadPlan();
+})();
+</script>
+
+</body></html>
