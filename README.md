@@ -52,3 +52,7 @@ Before upload: embedded JSON parsed successfully; event IDs were checked for dup
 - Separate event data from presentation code
 - Add a documented event verification and update workflow
 - Test filtering, budget calculations and storage failure behavior
+
+## Product documentation
+
+See the [documentation index](docs/README.md) for the [user guide](docs/user-guide.md), product brief, decision log, validation plan and proposed roadmap. The guides distinguish current source behaviour from future improvements and untested hypotheses. The documentation update does not refresh the event snapshot or add an AI recommendation feature.
